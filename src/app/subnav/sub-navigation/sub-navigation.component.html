@@ -1,0 +1,57 @@
+<nav class="border-b border-solid border-surface bg-background">
+  <div
+    class="max-w-screen-xl md:pl-4 w-full mx-auto relative flex flex-wrap md:flex-no-wrap items-center justify-center md:justify-start"
+  >
+    <button
+      class="button order-last md:order-first md:absolute flex items-center justify-center rounded-none md:rounded-full w-full md:w-10 h-10 p-0 leading-none text-lg flex-none md:shadow-lg md:hover:shadow-sm"
+      (click)="onCollapseButtonClicked()"
+    >
+      <i class="mdi mdi-close" aria-hidden="true"></i>
+    </button>
+    <div
+      class="flex-grow w-full flex items-center justify-between py-4 md:ml-10 flex-wrap md:flex-no-wrap text-sm font-semibold font-display relative"
+    >
+      <ul class="block px-4">
+        <li
+          *ngFor="let menuItem of menuItems"
+          class="inline-block mr-5 lg:mr-8 group relative"
+        >
+          <a
+            class="flex items-center"
+            [ngClass]="{ 'opacity-50 disabled': !menuItem.href }"
+            [routerLink]="menuItem.href"
+          >
+            <i class="mr-1 mdi {{ menuItem.icon }}"></i>
+            <span>
+              {{ menuItem.label }}
+            </span>
+            <i
+              *ngIf="menuItem.subMenuItems.length"
+              class="text-on-background-muted mdi mdi-chevron-down"
+            ></i>
+          </a>
+          <div
+            *ngIf="menuItem.subMenuItems.length"
+            class="absolute pt-2 hidden z-10 group-hover:block"
+          >
+            <div class="panel bg-neutral py-3 px-0">
+              <a
+                *ngFor="let subItem of menuItem.subMenuItems"
+                class="block py-1 px-4 whitespace-no-wrap"
+                [routerLink]="subItem.href"
+              >
+                {{ subItem.label }}
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="flex items-center px-4 mt-4 md:mt-0">
+        <a class="disabled inline-block md:ml-4">Help</a>
+        <a class="disabled inline-block ml-4">API</a>
+        <a class="disabled inline-block ml-4">Admin</a>
+      </div>
+    </div>
+  </div>
+</nav>

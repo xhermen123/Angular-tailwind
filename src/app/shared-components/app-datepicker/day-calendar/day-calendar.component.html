@@ -1,0 +1,53 @@
+<div *ngIf="currentCalendarMode ===  CalendarMode.Day" class="app-day-calendar-container">
+  <app-calendar-nav
+      (onGoToCurrent)="goToCurrent()"
+      (onLabelClick)="toggleCalendarMode(CalendarMode.Month)"
+      (onLeftNav)="onLeftNavClick()"
+      (onRightNav)="onRightNavClick()"
+      [isLabelClickable]="componentConfig.enableMonthSelector"
+      [label]="navLabel"
+      [showGoToCurrent]="_shouldShowCurrent"
+      [showLeftNav]="showLeftNav"
+      [showRightNav]="showRightNav"
+      [theme]="theme">
+  </app-calendar-nav>
+
+  <div [ngClass]="{'app-hide-near-month': !componentConfig.showNearMonthDays}"
+       class="app-calendar-wrapper">
+    <div class="app-weekdays">
+      <span *ngFor="let weekday of weekdays"
+            [innerText]="getWeekdayName(weekday)"
+            class="app-calendar-weekday">
+      </span>
+    </div>
+    <div *ngFor="let week of weeks" class="app-calendar-week">
+      <span *ngIf="componentConfig.showWeekNumbers"
+            [innerText]="week[0].date.isoWeek()"
+            class="app-week-number">
+      </span>
+      <button (click)="dayClicked(day)"
+              *ngFor="let day of week"
+              [attr.data-date]="day.date.format(componentConfig.format)"
+              [disabled]="day.disabled"
+              [innerText]="getDayBtnText(day)"
+              [ngClass]="getDayBtnCssClass(day)"
+              class="app-calendar-day"
+              type="button">
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-month-calendar
+    (onLeftNav)="onMonthCalendarLeftClick($event)"
+    (onLeftSecondaryNav)="onMonthCalendarSecondaryLeftClick($event)"
+    (onNavHeaderBtnClick)="toggleCalendarMode(CalendarMode.Day)"
+    (onRightNav)="onMonthCalendarRightClick($event)"
+    (onRightSecondaryNav)="onMonthCalendarSecondaryRightClick($event)"
+    (onSelect)="monthSelected($event)"
+    *ngIf="currentCalendarMode ===  CalendarMode.Month"
+    [config]="monthCalendarConfig"
+    [displayDate]="_currentDateView"
+    [ngModel]="_selected"
+    [theme]="theme">
+</app-month-calendar>

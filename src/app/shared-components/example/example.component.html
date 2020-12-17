@@ -1,0 +1,50 @@
+<div
+  class="flex justify-between w-full flex-wrap md:flex-no-wrap"
+  [ngClass]="{
+    'items-end': showTopics,
+    'items-center': !showTopics
+  }"
+>
+  <div class="example-content">
+    <div
+      modHighlight
+      [text]="example.data.text"
+      [highlightText]="highlightText"
+      [highlightClass]="'text-highlight'"
+      class="font-display font-medium"
+      [ngClass]="{
+        'text-2xl': showTopics
+      }"
+    >
+      {{ example.data.text }}
+    </div>
+
+    <div *ngIf="showTopics && example.queueItem.contentId" class="mt-4">
+      <mod-topic-chip-list
+        class="block"
+        [readOnly]="readOnly"
+        [minimized]="minimizeTopics"
+        [topics]="example.queueItem.topics"
+        (riskChanged)="onRiskChanged($event)"
+        (removed)="onTopicRemoved($event)"
+      ></mod-topic-chip-list>
+    </div>
+  </div>
+
+  <div class="actions text-sm">
+    <button
+      *ngIf="example.queueItem.contentId"
+      class="button py-1 px-2 ml-2"
+      disabled
+    >
+      {{ example.queueItem.language.language }}
+    </button>
+    <button
+      *ngIf="example.queueItem.contentId"
+      class="button py-1 px-2 ml-2"
+      (click)="redactOrDelete($event)"
+    >
+      <i class="mdi mdi-delete"></i>
+    </button>
+  </div>
+</div>

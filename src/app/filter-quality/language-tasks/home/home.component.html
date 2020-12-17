@@ -1,0 +1,59 @@
+<app-language-tasks-home-header></app-language-tasks-home-header>
+<div class="language-tasks-home">
+    <div class="tabs-wrapper">
+        <ul class="horizontal-nav">
+            <li class="nav-item" [ngClass]="{'active': selectedTab === 'all'}" (click)="selectTab('all')">All</li>
+            <li class="nav-item" [ngClass]="{'active': selectedTab === 'assigned_me'}" (click)="selectTab('assigned_me')">Assigned me</li>
+            <li class="nav-item" [ngClass]="{'active': selectedTab === 'pending'}" (click)="selectTab('pending')">Pending</li>
+            <li class="nav-item" [ngClass]="{'active': selectedTab === 'active'}" (click)="selectTab('active')">Active</li>
+            <li class="nav-item" [ngClass]="{'active': selectedTab === 'done'}" (click)="selectTab('done')">Done</li>
+        </ul>
+    </div>
+    <div class="table-wrapper"> 
+        <div class="table-header"> 
+            <div class="th checkbox">
+                <app-checkbox type="accent"></app-checkbox>
+            </div>
+            <div class="th id">ID</div>
+            <div class="th task">Task</div>
+            <div class="th assign-to">Assign To</div>
+            <div class="th unresolved-comments">Unresolved Comments</div>
+            <div class="th due">Due</div>
+            <div class="th actions">Actions</div>
+        </div>
+        <div class="table-body"> 
+            <div class="tr" *ngFor="let task of tasks | paginate: { itemsPerPage: countPerPage, currentPage: currentPage, totalItems: totalCount }"> 
+                <div class="td checkbox">
+                    <app-checkbox type="accent"></app-checkbox>
+                </div>
+                <div class="td id">{{task.queueItem.contentId}}</div>
+                <div class="td task">{{task.data.task}}</div>
+                <div class="td assign-to">{{task.queueItem.checkout && task.queueItem.checkout.moderatorId ? task.queueItem.checkout.moderatorId : 'Not Assigned'}}</div>
+                <div class="td unresolved-comments">
+                    <app-comment-icon [task]="task" (handleClick)="openCommentsPanel(task)"></app-comment-icon>
+                    <!-- <div class="comment-icon" (click)="openCommentsPanel(task)">
+                        <i class="material-icons md-18">textsms</i>
+                        <span *ngIf="task.queueItem.comments.unresolved">{{task.queueItem.comments.unresolved}}</span>
+                    </div> -->
+                </div>
+                <div class="td due">{{task.data.dueDate | dueDate}}</div>
+                <div class="td actions">
+                    <div class="action-view button no-border" [routerLink]="['/filter-quality/language-tasks', task.queueItem.contentId]"> 
+                        <i class="material-icons">remove_red_eye</i>
+                        <span>View</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-wrapper"> 
+            <app-pagination-controls
+                (pageChange)="onPageChange($event)"
+                >
+            </app-pagination-controls>
+            <div class="pagination-page-count-wrapper"> 
+                <app-pagination-counts (pageCountChange)="onPageCountChange($event)" [countArray]="perPageCounts"></app-pagination-counts>
+            </div>
+        </div>
+    </div>
+</div>
+<app-comments-panel (doCancel)="closeCommentsPanel()" *ngIf="isCommentsPanel" [queueId]="commentQueueId" [contentId]="commentContentId"></app-comments-panel>

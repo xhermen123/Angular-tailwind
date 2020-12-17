@@ -1,0 +1,406 @@
+@import '_vars.less';
+@import '_a11y.less';
+@import '~material-design-icons/iconfont/material-icons.css';
+@import '~@mdi/font/css/materialdesignicons.css';
+
+// Import Reset CSS. The goal is to reduce browser inconsistencies.
+// @import 'reset.less';
+// @import './assets/fonts/fontawesome/less/fontawesome.less';
+@import './app/directives/directive.less';
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+//   background-color: #fff;
+  font-family: var(--font-family-sans-serif);
+}
+
+sub-navigation{
+  background-color: var(--sub-navigation-bg);
+}
+
+.main-container {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+.main-container, button, input {
+  font-kerning: auto;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "lnum";
+  -moz-font-feature-settings: "lnum";
+  -ms-font-feature-settings: "lnum";
+  -o-font-feature-settings: "lnum";
+  font-feature-settings: "lnum";
+}
+
+/* Button styles */
+.button {
+  background: var(--button-bg);
+  color: var(--button-fg);
+  border: none;
+  padding: 0;
+  border-radius: var(--button-radius);
+  border: solid 1px var(--button-border-color);
+  border-color: var(--button-bg);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  &.no-border {
+    border: none;
+  }
+  &.primary {
+    background: var(--button-primary-bg);
+    color: var(--button-primary-fg);
+  }
+  &.active {
+    background: var(--button-active-bg);
+    color: var(--button-active-fg);
+  }
+  &.accent {
+    background: var(--button-active-bg);
+    color: var(--button-active-fg);
+  }
+  &.subtle {
+    background: var(--button-subtle-bg);
+    color: var(--button-subtle-fg);
+  }
+  &.icon {
+    padding: 0.25em 0.5em;
+    i.mdi { font-size: 24px; }
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+button{
+  outline: none;
+  border-radius: var(--button-radius);
+  border: solid 1px var(--button-border-color);
+  &.no-border {
+    border: none;
+  }
+  &:hover {
+    cursor: pointer;
+    color: var(--button-fg);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+button .btn-icon-left{
+  border-left: solid 1px var(--button-border-left);
+}
+
+button .btn-icon{
+  display: inline-block;
+  line-height: 38px;
+  padding: var(--button-padding-icon);
+}
+
+button{
+  outline: none;
+  &:hover > .btn-icon{
+    color: var(--page-bg);
+    background-color: var(--primary) !important;
+    border-radius: var(--button-radius);
+  }
+  &:hover > .btn-icon-left{
+    border-radius: 0 var(--button-radius) var(--button-radius) 0;
+  }
+}
+
+
+button .btn-label{
+  padding-right: 0.75em;
+  line-height: 38px;
+  padding: var(--button-padding);
+}
+
+button {
+  &:extend(.button);
+  &.primary { &:extend(.button.primary); }
+  &.subtle { &:extend(.button.subtle); }
+  &.icon { &:extend(.button.icon); }
+  &:focus {
+    &:extend(.button:focus);
+  }
+}
+
+.dropdown-menu{
+  background-color: var(--grey-bg);
+  border-radius: 0 0 var(--button-radius) var(--button-radius);
+  border: solid 1px var(--grey-border);;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 1;
+  width: 100%;
+}
+
+.dropdown-menu li{
+  display: block;
+  padding: var(--dropdown-item-padding);
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  color: var(--text-color);
+
+  &:hover{
+    background-color: var(--primary);
+    color: var(--grey-bg);
+    cursor: pointer;
+    border-radius: var(--button-radius);
+  }
+}
+
+.dropdown-btn{
+  position: relative;
+
+  &:hover > .dropdown-menu,
+  :focus-within > .dropdown-menu,
+  :hover,
+  :focus {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+// Horizontal rule
+hr {
+  width: 100%;
+  height: 0;
+  border: 0;
+  border-top: solid 2px var(--hr-color);
+}
+
+app-root {
+  padding: 0;
+  display: grid;
+  grid-template-areas: "header"
+                       "nav"
+                       "core";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: var(--font-family-monospace);
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+a img {
+  border: none;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.xng-breadcrumb-item, .xng-breadcrumb-separator, .xng-breadcrumb-trail {
+  color: var(--link-color) !important; //TODO: !important is bad. Style properly.
+}
+
+.disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+nav.root {
+  grid-area: nav;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .search-box {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 1em;
+
+    & > * {
+      margin-left: 1em;
+    }
+
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+select {
+  background: var(--input-select-bg);
+  padding: var(--input-select-padding);
+  border: var(--input-border);
+  border-radius: var(--input-select-radius);
+  color: var(--input-select-fg);
+  &::placeholder {
+    color: var(--input-select-placeholder);
+  }
+  &:focus {
+    outline: none;
+    border: var(--input-focus-border);
+  }
+}
+
+/* GRID LAYOUT HELPERS */
+.span-2 {
+  grid-column: span 2;
+}
+
+small,
+.small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.radio{
+  display: block;
+  position: relative;
+  padding-left: 23px;
+  margin-bottom: 12px;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: solid 2px var(--radio-border);
+}
+
+.radio:hover input ~ .checkmark {
+  border: solid 2px var(--primary);
+}
+
+.radio input:checked ~ .checkmark {
+  border: solid 2px var(--primary);
+}
+
+.radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.logo{
+  content: var(--logo-url);
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.ml-20 {
+  margin-left: 20px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+
+sub-navigation admin-button a,
+sub-navigation subnav-help a,
+sub-navigation api-button a{
+  color: var(--sub-navigation-txt);
+}
+
+/* RESPONSIVE LAYOUT HELPERS */
+@media screen and (max-width: var(--breakpoint-tablet-max)) {
+  .hide-tablet { display: none }
+  .show-tablet { display: initial }
+}

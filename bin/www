@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const PORT = process.env.PORT || 4200;
+
+const app = require('../server');
+const server = require('http').createServer(app);
+
+server.listen(PORT, () => {
+  console.log(`Listening at http://localhost:${PORT}`);
+})

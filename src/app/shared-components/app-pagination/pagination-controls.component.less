@@ -1,0 +1,102 @@
+.app-pagination {
+    margin-left  : 0;
+    // margin-bottom: 1rem;
+    font: 400 14px/20px var(--font-family-sans-serif);
+}
+
+.app-pagination::before,
+.app-pagination::after {
+    content: ' ';
+    display: table;
+}
+
+.app-pagination::after {
+    clear: both;
+}
+
+.app-pagination li {
+    -moz-user-select   : none;
+    -webkit-user-select: none;
+    -ms-user-select    : none;
+    margin-right       : 2px;
+    border-radius      : 0;
+    display: inline-block;
+}
+
+.app-pagination li a,
+.app-pagination li >span,
+.app-pagination li .button {
+    outline: none;
+    padding: 6px 12px;
+    color  : var(--pagination-button-fg);
+    background-color: var(--pagination-button-bg);
+    text-align: center;
+    cursor: pointer;
+}
+
+.app-pagination a,
+.app-pagination button {
+    display      : block;
+    border-radius: 0;
+}
+
+.app-pagination li a:hover {
+    background: var(--accent);
+    color     :var(--text-dark-color);
+    font-weight: bold;
+}
+
+.app-pagination .current a {
+    background: var(--accent);
+    color     :var(--text-dark-color);
+    cursor    : default;
+    font-weight: bold;
+}
+
+.app-pagination .disabled a {
+    color  : var(--pagination-button-fg);
+    background-color: var(--pagination-button-bg);
+    cursor : default;
+}
+
+.app-pagination .disabled a:hover {
+    color  : var(--pagination-button-fg);
+    background-color: var(--pagination-button-bg);
+}
+
+.app-pagination a,
+.app-pagination button {
+    color  : var(--pagination-button-fg);
+}
+
+.app-pagination .pagination-previous a {
+    border-radius: 4px 0px 0px 4px;
+    font-weight: 600;
+}
+
+.app-pagination .pagination-next a {
+    border-radius: 0px 4px 4px 0px;
+    font-weight: 600;
+}
+
+.app-pagination .show-for-sr {
+    position: absolute !important;
+    width   : 1px;
+    height  : 1px;
+    overflow: hidden;
+    clip    : rect(0, 0, 0, 0);
+}
+
+.app-pagination .small-screen {
+    display: none;
+}
+
+@media screen and (max-width: 601px) {
+    .app-pagination.responsive .small-screen {
+        display: inline-block;
+    }
+
+    .app-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
+        display: none;
+    }
+}

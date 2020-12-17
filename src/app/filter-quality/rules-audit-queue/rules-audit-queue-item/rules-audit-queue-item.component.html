@@ -1,0 +1,62 @@
+<div class="panel" [ngClass]="{ 'p-4': minimizeTopics }">
+  <div class="sm:flex w-full justify-between items-end">
+    <!-- Rule text and topics -->
+    <div class="flex-grow sm:pr-4">
+      <mod-topic-chip-list
+        class="block"
+        [topics]="rule.queueItem.topics"
+        [minimized]="minimizeTopics"
+        [readOnly]="!isReviewing"
+        (removed)="onTopicRemoved($event)"
+        (riskChanged)="onRiskChanged($event)"
+      >
+        <div
+          class="font-display font-medium text-highlight"
+          [ngClass]="{
+            'text-xl': minimizeTopics,
+            'text-5xl': !minimizeTopics
+          }"
+        >
+          {{ rule.data.text }}
+        </div>
+      </mod-topic-chip-list>
+    </div>
+
+    <div class="mt-4 sm:mt-0 text-xs">
+      <span class="opacity-50">
+        <i aria-hidden="true" class="mdi mdi-repeat"></i>
+        <ng-container i18n>
+          {{ rule.data.onCount | number }} occurrences
+        </ng-container>
+      </span>
+    </div>
+  </div>
+
+  <div
+    class="border-t border-solid border-divider"
+    [ngClass]="{
+      'pt-8 mt-8': !minimizeTopics,
+      'pt-4 mt-4': minimizeTopics
+    }"
+  >
+    <mod-queue-item-tags
+      class="queue-item-tags"
+      [tags]="rule.queueItem.tags"
+      [labelGroups]="labelGroups"
+      [readOnly]="!isReviewing"
+      (tagsUpdated)="onTagsUpdated($event)"
+    ></mod-queue-item-tags>
+  </div>
+</div>
+
+<div>
+  <div class="mt-8 text-sm">Examples of this rule:</div>
+  <mod-example
+    *ngFor="let example of examples | async"
+    class="block p-4 border-b border-solid border-divider"
+    [example]="example"
+    [readOnly]="true"
+    [showTopics]="false"
+    [commitDefaults]="commitTopicDefaults"
+  ></mod-example>
+</div>

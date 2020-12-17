@@ -1,0 +1,17 @@
+// prefers-reduced-motion
+// Disable animated transitions for those who don't want it.
+// https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: all 0ms !important;
+  }
+}
+
+// EXPERIMENTAL: prefers-reduced-transparency
+// No browsers support this yet, but it's coming
+// https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency
+@media (prefers-reduced-transparency: reduce) {
+  * {
+    opacity: 1;
+  }
+}

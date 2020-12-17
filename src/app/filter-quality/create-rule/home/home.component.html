@@ -1,0 +1,27 @@
+<app-create-rule-home-header></app-create-rule-home-header>
+<div class="create-rule-home">
+    <div class="rule-text">
+        <span *ngIf="!isRuleTextEdit">{{ruleText}}</span>
+        <input *ngIf="isRuleTextEdit" [(ngModel)]="ruleText"/>
+        <button>
+            <i class="material-icons">edit</i>
+            Edit
+        </button>
+    </div>
+    <div class="split-rule-text"> 
+        <span *ngFor="let word of splitRuleWords" class="word">{{word}}</span>
+    </div>
+    <div class="steps-wrapper"> 
+        <div class="steps-nav"> 
+            <div class="step">
+                <span class="mark">
+                    <i class="material-icons">done</i>
+                </span>
+                text
+            </div>
+        </div>
+        <div class="steps-panel">
+            
+        </div>
+    </div>
+</div>

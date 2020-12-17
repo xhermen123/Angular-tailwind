@@ -1,0 +1,106 @@
+@import '../common/styles/variables';
+
+& {
+  app-day-calendar {
+    display: inline-block;
+
+    .app-day-calendar-container {
+      background: @c-light-black;
+      color: @calendar-fg;
+      font: 600 12px/20px 'Open Sans';
+    }
+
+    .app-calendar-wrapper {
+      box-sizing: border-box;
+      // border: 1px solid @c-black;
+
+      .app-calendar-weekday:first-child {
+        border-left: none;
+      }
+    }
+
+    .app-weekdays {
+      font-size: 15px;
+      margin-bottom: 5px;
+      border: 1px solid @calendar-border-color;
+      border-bottom: none;
+    }
+
+    .app-calendar-weekday {
+      box-sizing: border-box;
+      display: inline-block;
+      width: @basic-height;
+      text-align: center;
+      border-left: 1px solid @calendar-border-color;
+      border-bottom: 1px solid @calendar-border-color;
+    }
+
+    .app-calendar-day {
+      box-sizing: border-box;
+      width: @basic-height;
+      height: @basic-height;
+      cursor: pointer;
+    }
+
+    .app-selected {
+      background: @c-primary;
+      color: @c-white;
+    }
+
+    .app-prev-month, .app-next-month {
+      opacity: 0.5;
+    }
+
+    .app-hide-near-month {
+      .app-prev-month, .app-next-month {
+        visibility: hidden;
+      }
+    }
+
+    .app-week-number {
+      position: absolute;
+      font-size: 9px;
+    }
+
+    &.app-material {
+
+      .app-calendar-weekday {
+        height: @basic-height - 5px;
+        width: @basic-height;
+        line-height: @basic-height - 5px;
+        color: darken(@c-light-gray, 40%);
+        border: none;
+      }
+
+      .app-calendar-wrapper {
+        border: 1px solid @c-light-gray;
+      }
+
+      .app-calendar-month,
+      .app-calendar-day {
+        box-sizing: border-box;
+        background: @c-white;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+
+        &:hover {
+          background: @c-light-gray;
+        }
+      }
+
+      .app-selected {
+        background: @c-primary;
+        color: @c-white;
+
+        &:hover {
+          background: @c-primary;
+        }
+      }
+
+      .app-current-day {
+        border: 1px solid @c-primary;
+      }
+    }
+  }
+}

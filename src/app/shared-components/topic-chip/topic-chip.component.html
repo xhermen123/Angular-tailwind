@@ -1,0 +1,120 @@
+<ng-container *ngIf="type === 'default'">
+  <div class="flex items-center text-sm">
+    <ng-container *ngIf="topic.id === 0">
+      <div
+        class="bg-risk-{{
+          topic.risk
+        }} py-2 px-2 rounded-l-lg h-full flex items-center"
+      >
+        <div>{{ topic.risk }}</div>
+      </div>
+      <div
+        *ngIf="!minimized"
+        class="bg-neutral py-2 px-2 h-full flex items-center"
+      >
+        <div>General</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="topic.id > 0">
+      <div class="bg-risk-{{ topic.risk }} w-1 h-full flex-none"></div>
+      <div class="bg-neutral py-2 px-2 h-full flex items-center last:rounded-r">
+        <i
+          class="block mr-2 mdi mdi-{{ topic.icon }}"
+          aria-hidden="true"
+          title="{{ topic.name }}"
+        ></i>
+
+        <div *ngIf="!minimized" class="whitespace-no-wrap">
+          {{ topic.name }}
+        </div>
+
+        <div
+          *ngIf="!editing"
+          class="mr-1"
+          [ngClass]="{
+            'ml-12': !minimized
+          }"
+        >
+          {{ topic.risk }}
+        </div>
+      </div>
+    </ng-container>
+
+    <div
+      *ngIf="editing"
+      class="bg-neutral flex items-center h-full overflow-hidden pl-1"
+      [@slideInOut]
+    >
+      <button
+        *ngFor="let iRisk of risks"
+        class="leading-none w-6 h-6 flex-none mr-1 rounded hover:bg-highlight"
+        [ngClass]="{
+          'bg-surface': topic.risk !== iRisk,
+          'bg-highlight text-on-highlight': topic.risk === iRisk
+        }"
+        (click)="setTopicRisk(iRisk)"
+      >
+        {{ iRisk }}
+      </button>
+      <button
+        class="leading-none w-6 h-6 flex-none mr-1 rounded bg-surface text-danger hover:text-on-danger hover:bg-danger"
+        *ngIf="!readOnly && topic.id !== 0"
+        aria-label="Remove topic"
+        i18n-aria-remove-topic
+        (click)="removeTopic()"
+      >
+        <span>&times;</span>
+      </button>
+    </div>
+
+    <button
+      class="button flex items-center py-0 px-2 rounded-l-none border-0 h-full"
+      [ngClass]="{
+        'bg-secondary text-on-secondary': editing,
+        'rounded-r': !minimized || topic.id !== 0,
+        'rounded-r-none': minimized && topic.id === 0,
+        'ml-1': !editing && (!minimized || topic.id !== 0)
+      }"
+      *ngIf="!readOnly"
+      aria-label="Edit topic"
+      i18n-aria-topic
+      (click)="toggleEdit()"
+    >
+      <div
+        class="transform transition-transform duration-150 ease-in-out text-base"
+        [ngClass]="{
+          'rotate-0': !editing,
+          'rotate-90': editing
+        }"
+      >
+        <i class="mdi mdi-pencil"></i>
+      </div>
+    </button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="type === 'secondary'">
+  <div class="flex items-center text-sm w-full">
+    <div class="bg-risk-{{ topic.risk }} w-1 h-full flex-none"></div>
+    <div
+      class="bg-neutral py-2 px-2 h-full w-full flex items-center justify-between"
+    >
+      <i
+        class="block mr-2 mdi text-on-neutral"
+        [class]="topic.id > 0 ? 'mdi-' + topic.icon : 'mdi-chat'"
+        aria-hidden="true"
+        title="{{ topic.name }}"
+      ></i>
+
+      <div class="flex justify-between items-center w-full">
+        <div class="whitespace-no-wrap">{{ topic.name }}</div>
+
+        <div
+          class="mr-1 rounded-full flex items-center justify-center font-bold text-on-neutral w-6 h-6 bg-contrast text-on-contrast"
+        >
+          {{ topic.risk }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

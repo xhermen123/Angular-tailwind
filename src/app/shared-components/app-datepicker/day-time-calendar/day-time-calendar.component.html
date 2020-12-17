@@ -1,0 +1,16 @@
+<app-day-calendar #dayCalendar
+                 (onGoToCurrent)="onGoToCurrent.emit()"
+                 (onLeftNav)="onLeftNavClick($event)"
+                 (onRightNav)="onRightNavClick($event)"
+                 (onSelect)="dateSelected($event)"
+                 [config]="componentConfig"
+                 [displayDate]="displayDate"
+                 [ngModel]="_selected"
+                 [theme]="theme">
+</app-day-calendar>
+<app-time-select #timeSelect
+                (onChange)="timeChange($event)"
+                [config]="componentConfig"
+                [ngModel]="_selected"
+                [theme]="theme">
+</app-time-select>

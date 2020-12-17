@@ -1,0 +1,129 @@
+<section class="max-w-screen-xl mx-auto px-4 mb-10">
+  <header class="flex flex-wrap md:flex-no-wrap justify-between items-center">
+    <div class="w-full mb-4 md:w-auto">
+      <h1 class="m-0 p-0 text-2xl font-display font-bold">{{ heading }}</h1>
+      <mod-breadcrumbs
+        class="mt-2"
+        [breadcrumbs]="breadcrumbs"
+      ></mod-breadcrumbs>
+    </div>
+
+    <div class="w-full md:w-auto md:flex items-center justify-end">
+      <!-- Filter options -->
+      <button
+        *ngIf="queueService.queueConfig?.filters?.length > 0"
+        class="button mr-3 mb-3"
+        [disabled]="isLoading"
+        (click)="onFilterButtonPressed()"
+      >
+        <ng-container i18n>Filters</ng-container>
+      </button>
+
+      <button
+        class="button mr-3 mb-3"
+        [ngClass]="{
+          'is-not-reviewing': !isReviewing,
+          disabled: isLoading
+        }"
+        [disabled]="isLoading"
+        (click)="onReviewButtonPressed()"
+      >
+        <ng-container *ngIf="!isReviewing" i18n>Start Reviewing</ng-container>
+        <ng-container *ngIf="isReviewing" i18n>Stop Reviewing</ng-container>
+      </button>
+
+      <div class="flex items-center mr-3 mb-3">
+        <mod-option-button-group
+          [options]="topicChipLayoutOptions"
+          [value]="topicChipLayout"
+          (valueChange)="topicChipLayout = $event"
+        ></mod-option-button-group>
+      </div>
+
+      <div class="flex items-center mb-3">
+        <button
+          class="button mr-3"
+          [disabled]="!isReviewing || isLoading || !hasPreviousPage"
+          [ngClass]="{
+            disabled: !isReviewing || isLoading || !hasPreviousPage
+          }"
+          (click)="onPreviousButtonPressed()"
+        >
+          Previous
+        </button>
+        <button
+          class="button button-primary px-6 font-display font-semibold"
+          [disabled]="!isReviewing || isLoading"
+          [ngClass]="{
+            disabled: !isReviewing || isLoading
+          }"
+          (click)="onNextButtonPressed()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!--
+    RIP mod-shared-sidebar
+    Another sidebar component is coming in MR!144
+    Once it's merged, add it here and populate it with filter options
+  -->
+
+  <div [style]="isLoading ? 'display: none;' : ''">
+    <ng-content></ng-content>
+  </div>
+
+  <div *ngIf="isLoading">
+    <mod-loading-indicator [loading]="true"></mod-loading-indicator>
+  </div>
+
+  <div *ngIf="showDoneMessage" class="text-center">
+    <div class="done-emoji">
+      <div>🥳</div>
+    </div>
+    <div>
+      <span class="text-xl">Your queue is empty! Great work!</span>
+      <br />
+      (Come back later and there might be more)
+    </div>
+  </div>
+
+  <div class="md:flex justify-between items-center">
+    <div
+      *ngIf="isReviewing"
+      class="text-sm text-on-background-muted md:mr-5 mb-3 flex-none"
+    >
+      <div>
+        {{ amountCompleted }} item{{ amountCompleted !== 1 ? 's' : '' }}
+        completed
+      </div>
+      <div>{{ queueSize }} items remaining</div>
+    </div>
+
+    <mod-option-button-group
+      class="text-sm flex-grow block md:mr-5 mb-3"
+      [value]="resultsPerPage"
+      [options]="resultsPerPageOptions"
+      (valueChange)="resultsPerPage = $event"
+    ></mod-option-button-group>
+
+    <div class="md:flex justify-end items-center mb-3">
+      <button
+        class="button"
+        [disabled]="!isReviewing || isLoading || !hasPreviousPage"
+        (click)="onPreviousButtonPressed()"
+      >
+        Previous
+      </button>
+      <button
+        class="button button-primary px-6 ml-3 font-display font-semibold"
+        [disabled]="!isReviewing || isLoading"
+        (click)="onNextButtonPressed()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+<!-- <span *ngIf="label" [attr.aria-label]="label" id="label">{{ label }}</span> -->
+
+<div class="flex" role="group" [attr.aria-label]="label">
+  <button
+    *ngFor="let option of options"
+    class="button py-1 rounded-none first:rounded-l last:rounded-r mr-1"
+    [ngClass]="{
+      'bg-secondary text-on-secondary': multiple
+        ? value.indexOf(option.value) > -1
+        : value === option.value,
+      disabled: readOnly
+    }"
+    (click)="onOptionButtonClicked(option.value)"
+  >
+    <i *ngIf="option.icon" class="mdi mdi-{{ option.icon }}"></i>
+    <span class="font-display font-semibold text-sm">
+      {{ option.label }}
+    </span>
+  </button>
+</div>

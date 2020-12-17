@@ -1,0 +1,78 @@
+<div id="language-task-details"> 
+    <app-language-tasks-details-header [pageType]="pageType" (taskActionEvent)="changeTaskAction($event)"></app-language-tasks-details-header>
+    <div class="language-task-details">
+        <div>
+            <div class="section" [ngClass]="{'half-mb': pageType !== 0}"> 
+                <p class="section-name">Name</p>
+                <span class="text" *ngIf="pageType === 0">{{task && task.data.task}}</span>
+                <input [(ngModel)]="taskFormData.data.task" class="input-field input" *ngIf="pageType !== 0"/>
+            </div>
+            <div class="section half-mb"> 
+                <p class="section-name">Instructions</p>
+                <span class="text lh-30" *ngIf="pageType === 0">{{task && task.data.instructions}}</span>
+                <textarea [(ngModel)]="taskFormData.data.instructions" class="input-field textarea" *ngIf="pageType !== 0"></textarea>
+            </div>
+            <div class="section actions details-info" *ngIf="pageType === 0"> 
+                <div class="item due-date"> 
+                    <p class="action-name">Due Date</p>
+                    <span class="text">{{dueDate | date : 'MM-dd-y'}}</span>
+                </div>
+                <div class="item languages"> 
+                    <p class="action-name">Languages</p>
+                    <span class="text">{{task && task.queueItem.language && task.queueItem.language.language ? task.queueItem.language.language : 'All'}}</span>
+                </div>
+                <div class="item assign-to"> 
+                    <p class="action-name">Assign To</p>
+                    <span class="text">{{task && task.queueItem.checkout && task.queueItem.checkout.moderatorId ? task.queueItem.checkout.moderatorId : 'Not Assigned'}}</span>
+                </div>
+                <div class="item accounts"> 
+                    <p class="action-name">Accounts</p>
+                    <span class="text">Admin Only</span>
+                </div>
+            </div>
+            <div class="section half-mb actions edit-info" *ngIf="pageType !== 0"> 
+                <div class="item due-date"> 
+                    <p class="action-name">Due Date</p>
+                    <app-date-picker id="picker"
+                        #dateComponent
+                        [config]="config"
+                        [(ngModel)]="taskFormData.data.dueDate"
+                    >
+                    </app-date-picker>
+                </div>
+                <div class="item languages"> 
+                    <p class="action-name">Languages</p>
+                    <app-app-language-button-group [multiple]="pageType == 2" (languageChange)="onLanguageChange($event)" [(ngModel)]="taskFormData.language"></app-app-language-button-group>
+                </div>
+                <div class="item assign-to"> 
+                    <p class="action-name">Assign To</p>
+                    <app-select [items]="assignOptions" (doSelect)="changeAssign($event)" [(ngModel)]="taskFormData.data.assign"></app-select>
+                </div>
+                <div class="item accounts"> 
+                    <p class="action-name">Accounts</p>
+                    <app-select [items]="accountOptions" [multiselect]="pageType == 2" (doSelect)="changeAccount($event)" [(ngModel)]="taskFormData.clientId"></app-select>
+                </div>
+            </div>
+            <div class="section" *ngIf="comments.length"> 
+                <p class="section-name">Comments</p>
+                <div class="comment-wrapper" *ngFor="let comment of comments"> 
+                    <app-comment [queueId]="'task'" [contentId]="task && task.queueItem.contentId" [comment]="comment"></app-comment>
+                </div>
+            </div>
+        </div>
+        <div class="buttons-wrapper"> 
+            <button class="button no-border accent" *ngIf="pageType !== 0" (click)="onSave()">
+                <span class="btn-label">Save</span>
+            </button>
+            <button class="button no-border light" *ngIf="pageType != 2" (click)="onStart()">
+                <span class="btn-label">Start</span>
+            </button>
+            <button class="button no-border light" *ngIf="pageType != 2" (click)="onStop()">
+                <span class="btn-label">Stop</span>
+            </button>
+            <button class="button no-border dark" [routerLink]="['/filter-quality/language-tasks']">
+                <span class="btn-label">Cancel</span>
+            </button>
+        </div>
+    </div>
+</div>

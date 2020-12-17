@@ -1,0 +1,31 @@
+# Mapping of environment variables to config values
+# This file is safe to track
+# Be sure to keep this file in sync with development and production YAMLs
+
+port: PORT
+
+db:
+  redis:
+    connectionString: DB_REDIS_CONNECTION_STRING
+    host: DB_REDIS_HOST
+    port: DB_REDIS_PORT
+    password: DB_REDIS_PASSWORD
+
+session:
+  secret: SESSION_SECRET
+
+sift:
+  rulesApi:
+    url: RULES_API_HOST
+  rulesAudit:
+    url: RULES_AUDIT_HOST
+    debugApiKey: RULES_AUDIT_DEBUG_APIKEY
+
+sso:
+  audience: SSO_AUDIENCE
+  issuer: SSO_ISSUER
+  loginUrl: SSO_LOGIN_URL
+  logoutUrl: SSO_LOGOUT_URL
+  validateUrl: SSO_VALIDATE_URL
+  privateUrl: SSO_PRIVATE_URL
+  signingKey: SSO_SIGNING_KEY

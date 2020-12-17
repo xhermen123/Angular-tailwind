@@ -1,0 +1,32 @@
+<div class="app-month-calendar-container">
+  <app-calendar-nav
+      (onGoToCurrent)="goToCurrent()"
+      (onLabelClick)="toggleCalendarMode()"
+      (onLeftNav)="onLeftNavClick()"
+      (onLeftSecondaryNav)="onLeftSecondaryNavClick()"
+      (onRightNav)="onRightNavClick()"
+      (onRightSecondaryNav)="onRightSecondaryNavClick()"
+      [isLabelClickable]="componentConfig.isNavHeaderBtnClickable"
+      [label]="navLabel"
+      [showGoToCurrent]="shouldShowCurrent()"
+      [showLeftNav]="showLeftNav"
+      [showLeftSecondaryNav]="showSecondaryLeftNav"
+      [showRightNav]="showRightNav"
+      [showRightSecondaryNav]="showSecondaryRightNav"
+      [theme]="theme">
+  </app-calendar-nav>
+
+  <div class="app-calendar-wrapper">
+    <div *ngFor="let monthRow of yearMonths" class="app-months-row">
+      <button (click)="monthClicked(month)"
+              *ngFor="let month of monthRow"
+              [attr.data-date]="month.date.format(componentConfig.format)"
+              [disabled]="month.disabled"
+              [innerText]="month.text"
+              [ngClass]="getMonthBtnCssClass(month)"
+              class="app-calendar-month"
+              type="button">
+      </button>
+    </div>
+  </div>
+</div>

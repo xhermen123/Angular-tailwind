@@ -1,0 +1,10 @@
+# Starter CODEOWNERS file
+# Will add more developers as we onboard more
+
+.gitlab-ci.yml        @shane.lawrence
+package*.json         @shane.lawrence
+release.config.js     @shane.lawrence
+renovate.json         @shane.lawrence
+server.js             @shane.lawrence
+
+src/app               @alex.draper @shane.lawrence

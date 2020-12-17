@@ -1,0 +1,5 @@
+<div [ngClass]="{'info-item': true, 'small': small}" [ngStyle]="{'border-color': topic.color}"> 
+    <i [ngClass]="'fas fa-' + topic.icon" aria-hidden="true"></i>
+    <span class="text" *ngIf="!small">{{topic.name}}</span>
+    <span class="count">{{topic.value}}</span>
+</div>

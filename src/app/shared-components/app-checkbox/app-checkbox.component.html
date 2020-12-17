@@ -1,0 +1,4 @@
+<label class="app-checkbox" [ngClass]="additionalClassName">
+  <!-- <input type="checkbox" [checked]="initValue" /> -->
+  <span class="checkmark" [ngClass]="{'checked' : _value}" (click)="toggleCheckbox()"></span>
+</label>

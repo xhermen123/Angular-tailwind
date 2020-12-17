@@ -1,0 +1,88 @@
+:host {
+  width: 100%;
+  display: block;
+}
+
+.header-title {
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+  }
+}
+
+.header-title,
+.header-actions {
+  width: 100%;
+  margin-bottom: 1rem;
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}
+
+.toggle-reviewing-button {
+  display: block;
+  &.is-not-reviewing {
+    animation: lookAtMe 5s cubic-bezier(0.25, 1, 0.25, 0.8) 5s infinite normal;
+  }
+}
+
+.pagination-buttons {
+  margin-bottom: 1rem;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.next-button {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  margin-left: 0.5rem;
+}
+
+.queue-item-counter {
+  margin-bottom: 1rem;
+}
+
+@keyframes lookAtMe {
+  0% {
+    transform: rotateZ(0deg);
+    box-shadow: none;
+  }
+  10% {
+    transform: rotateZ(5deg);
+  }
+  15% {
+    transform: rotateZ(-8deg);
+    box-shadow: 0 0 16px var(--accent-brand);
+  }
+  25% {
+    transform: rotateZ(3deg);
+  }
+  30% {
+    transform: rotateZ(0deg);
+    box-shadow: 0 0 16px var(--accent-brand);
+  }
+  50% {
+    transform: rotateZ(0deg);
+    box-shadow: none;
+  }
+}
+
+.done-emoji {
+  animation: partyBubble 0.7s ease 0s infinite alternate none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100px;
+  font-size: 50px;
+}
+
+@keyframes partyBubble {
+  0% {
+    transform: rotateZ(-6deg) scale(0.9);
+  }
+  100% {
+    transform: rotateZ(4deg) scale(1.1);
+  }
+}

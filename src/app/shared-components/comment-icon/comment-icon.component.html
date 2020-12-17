@@ -1,0 +1,5 @@
+<div class="comment-icon" (click)="clickEvent()">
+    <!-- <i class="fas fa-comment-dots"></i> -->
+    <i class="material-icons md-18">textsms</i>
+    <span *ngIf="task.queueItem.comments.unresolved">{{task.queueItem.comments.unresolved}}</span>
+</div>

@@ -1,0 +1,5 @@
+<div class="toggle" (click)="onClick()">
+    <input class="toggle-input" type="checkbox" />
+    <button class="toggle-btn {{className}}" [ngClass]="{'toggle-btn-on': checked, 'toggle-btn-off': !checked}" [attr.aria-expanded]="checked" ></button>
+    <label>{{label}}</label>
+</div>

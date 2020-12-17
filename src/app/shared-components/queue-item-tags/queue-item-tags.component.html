@@ -1,0 +1,24 @@
+<div *ngIf="readOnly" class="flex flex-wrap">
+  <div
+    *ngFor="let tag of tags"
+    class="py-2 px-4 bg-neutral text-on-neutral rounded mr-2 font-display font-semibold text-sm"
+  >
+    {{ tag }}
+  </div>
+</div>
+
+<ng-container *ngIf="!readOnly">
+  <ng-container *ngFor="let tag of optionButtonGroups">
+    <ng-container *ngIf="!tag.ifTag || tags.indexOf(tag.ifTag) >= 0">
+      <div class="queue-tag">
+        <mod-option-button-group
+          [label]="tag.name"
+          [options]="tag.options"
+          [multiple]="tag.multiple"
+          [value]="tag.value"
+          (valueChange)="onSelectedOptionsChanged(tag, $event)"
+        ></mod-option-button-group>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

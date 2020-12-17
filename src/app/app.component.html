@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div [ngClass]="{ 'overflow-hidden': menuHidden }">
+    <div
+      class="w-full transition-transform duration-200 ease-in-out"
+      [ngClass]="{ 'transform -translate-y-full absolute': menuHidden }"
+    >
+      <main-header class="block"></main-header>
+      <main-sub-navigation
+        class="block"
+        (collapse)="menuHidden = true"
+      ></main-sub-navigation>
+    </div>
+    <div
+      class="max-w-screen-xl mx-auto pl-4"
+      [ngClass]="{ hidden: !menuHidden }"
+    >
+      <button
+        class="button leading-none flex items-center justify-center rounded-b-full w-12 h-8"
+        aria-label="Show menu"
+        (click)="menuHidden = false"
+      >
+        <i class="text-lg mdi mdi-chevron-down" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <main class="py-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,52 @@
+.create-rule-home {
+    padding-top: var(--section-padding-md);
+
+    .rule-text {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        padding: 10px 40px;
+        background-color: var(--section-bg);
+        border-radius: 2px;
+
+        span, input {
+            flex: 1;
+            font: Bold 26px/40px var(--font-family-monospace);
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            height: 38px;
+            width: 140px;
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+                background: var(--button-bg);
+            }
+
+            i {
+                font-size: 16px;
+                margin-right: 14px;
+            }
+        }
+    }
+
+    .split-rule-text {
+        display: flex;
+        margin-top: 18px;
+        padding-left: 30px;
+
+        .word {
+            display: block;
+            padding: 10px 15px;
+            margin-right: 10px;
+            height: 48px;
+            font: Bold 20px/24px var(--font-family-monospace);
+            background-color: var(--word-pane-bg);
+        }
+    }
+}

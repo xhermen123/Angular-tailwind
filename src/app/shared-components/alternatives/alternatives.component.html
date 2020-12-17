@@ -1,0 +1,60 @@
+<div class="alternatives-content">
+  <ng-container *ngIf="!mergedTags || mergedTags.length === 0">
+    <div
+      *ngIf="!disabled"
+      class="text-on-background-muted p-8 flex flex-col items-center"
+    >
+      <i class="mdi mdi-information mdi-36px"></i>
+      You have not added any alternatives
+    </div>
+    <!-- Show a compact view in read-only mode -->
+    <div *ngIf="disabled" class="text-on-background-muted">
+      No alternatives
+    </div>
+  </ng-container>
+
+  <ul class="flex flex-row flex-wrap items-center justify-start">
+    <li
+      *ngFor="let tag of mergedTags"
+      class="flex flex-row items-stretch rounded-md mr-4 mb-4"
+    >
+      <!-- display: block -->
+      <span
+        class="px-3 border border-surface-alt first:rounded-l flex items-center"
+      >
+        <!-- Tag type icon indicator -->
+        <i
+          *ngIf="tag.altType === altTypes.AltSpelling"
+          class="mr-2 mdi mdi-18px mdi-spellcheck"
+          title="Alt Spelling"
+        ></i>
+        <i
+          *ngIf="tag.altType === altTypes.AltSense"
+          class="mr-2 mdi mdi-18px mdi-arrow-decision-auto"
+          title="Alt Sense"
+        ></i>
+        <i
+          *ngIf="tag.altType === altTypes.Language"
+          class="mr-2 mdi mdi-18px mdi-translate"
+          title="Language"
+        ></i>
+
+        <!-- Tag value -->
+        <ng-container *ngIf="tag.altType === altTypes.Language">{{
+          languageName(tag.value.language)
+        }}</ng-container>
+        <ng-container *ngIf="tag.altType !== altTypes.Language">{{
+          tag.value
+        }}</ng-container>
+      </span>
+
+      <button
+        *ngIf="!disabled"
+        class="ml-1 button text-lg last:rounded-l-none last:rounded-r"
+        (click)="removeAlternative(tag.value, tag.altType)"
+      >
+        &times;
+      </button>
+    </li>
+  </ul>
+</div>

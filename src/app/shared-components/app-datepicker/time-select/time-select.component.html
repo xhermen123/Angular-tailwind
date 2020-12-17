@@ -1,0 +1,67 @@
+<ul class="app-time-select-controls">
+  <li class="app-time-select-control app-time-select-control-hours">
+    <button (click)="increase('hour')"
+            [disabled]="!showIncHour"
+            class="app-time-select-control-up"
+            type="button">
+    </button>
+    <span [innerText]="hours"
+          class="app-time-select-display-hours">
+    </span>
+    <button (click)="decrease('hour')"
+            [disabled]="!showDecHour"
+            class="app-time-select-control-down"
+            type="button">
+    </button>
+  </li>
+  <li [innerText]="componentConfig.timeSeparator"
+      class="app-time-select-control app-time-select-separator">
+  </li>
+  <li class="app-time-select-control app-time-select-control-minutes">
+    <button (click)="increase('minute')"
+            [disabled]="!showIncMinute"
+            class="app-time-select-control-up"
+            type="button"></button>
+    <span [innerText]="minutes"
+          class="app-time-select-display-minutes">
+    </span>
+    <button (click)="decrease('minute')"
+            [disabled]="!showDecMinute" class="app-time-select-control-down"
+            type="button">
+    </button>
+  </li>
+  <ng-container *ngIf="componentConfig.showSeconds">
+    <li [innerText]="componentConfig.timeSeparator"
+        class="app-time-select-control app-time-select-separator">
+    </li>
+    <li class="app-time-select-control app-time-select-control-seconds">
+      <button (click)="increase('second')"
+              [disabled]="!showIncSecond"
+              class="app-time-select-control-up"
+              type="button"></button>
+      <span [innerText]="seconds"
+            class="app-time-select-display-seconds">
+      </span>
+      <button (click)="decrease('second')"
+              [disabled]="!showDecSecond"
+              class="app-time-select-control-down"
+              type="button">
+      </button>
+    </li>
+  </ng-container>
+  <li *ngIf="!componentConfig.showTwentyFourHours" class="app-time-select-control app-time-select-control-meridiem">
+    <button (click)="toggleMeridiem()"
+            [disabled]="!showToggleMeridiem"
+            class="app-time-select-control-up"
+            type="button">
+    </button>
+    <span [innerText]="meridiem"
+          class="app-time-select-display-meridiem">
+    </span>
+    <button (click)="toggleMeridiem()"
+            [disabled]="!showToggleMeridiem"
+            class="app-time-select-control-down"
+            type="button">
+    </button>
+  </li>
+</ul>

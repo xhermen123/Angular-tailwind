@@ -1,0 +1,54 @@
+@import '../../../_breakpoints.less';
+
+topic-chip + topic-chip {
+  margin-left: var(--button-spacing);
+}
+
+.example {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  @media screen and (min-width: @breakpoint-tablet-min) {
+    flex-wrap: nowrap;
+  }
+}
+
+.example-content {
+  flex-grow: 1;
+}
+
+.text {
+  &.display {
+    font-size: 1.85rem;
+  }
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  margin-top: var(--button-spacing);
+  button:not(:last-child) {
+    margin-right: var(--button-spacing);
+  }
+  @media screen and (min-width: @breakpoint-tablet-min) {
+    margin-top: 0;
+    margin-left: 1rem;
+    width: auto;
+    flex-wrap: nowrap;
+  }
+}
+
+.topics {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.confusing-checkbox {
+  display: none;
+  margin-right: 0.5rem;
+  margin-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}

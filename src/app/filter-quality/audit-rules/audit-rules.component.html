@@ -1,0 +1,182 @@
+<section id="audit-rules">
+  <header>
+    <h1 i18n>Audit Rules</h1>
+
+    <div class="option-toggles">
+      <mod-option-button-group
+        [label]="'Layout'"
+        [options]="viewModes"
+        [(value)]="viewMode"
+        i18n-label
+      ></mod-option-button-group>
+
+      <button (click)="toggleReviewing()" [ngClass]="{ subtle: !isReviewing }">
+        <ng-container *ngIf="!isReviewing" i18n>Start Reviewing</ng-container>
+        <ng-container *ngIf="isReviewing" i18n>Stop Reviewing</ng-container>
+      </button>
+
+      <button class="subtle disabled" i18n>Filter Data</button>
+
+      <button class="subtle disabled" i18n>Saved Views</button>
+
+      <button aria-label="Settings" class="disabled">
+        <i class="mdi mdi-settings"></i>
+      </button>
+    </div>
+
+    <nav class="breadcrumb">
+      <xng-breadcrumb></xng-breadcrumb>
+    </nav>
+  </header>
+
+  <mod-loading-indicator
+    *ngIf="!currentItem && loadingItem"
+    [loading]="loadingItem"
+    >Loading...</mod-loading-indicator
+  >
+  <mod-loading-indicator *ngIf="!currentItem && !loadingItem"
+    >No rules available to check out</mod-loading-indicator
+  >
+
+  <div
+    class="checkout"
+    *ngIf="
+      currentItem?.queueItem?.checkout &&
+      currentItem?.queueItem?.checkout?.moderatorId !== currentUser?.moderatorId
+    "
+  >
+    <i class="mdi mdi-account-check-outline"></i>
+    This rule is checked out to
+    {{ currentItem?.queueItem?.checkout?.moderatorId }}.
+  </div>
+
+  <div class="rule-item" *ngIf="currentItem">
+    <!-- Rule text -->
+    <h2 class="rule-item-text">{{ currentItem?.data?.text }}</h2>
+
+    <!-- List of topics -->
+    <div class="topics" *ngIf="currentItem">
+      <mod-topic-chip-list
+        [topics]="currentItem.queueItem.topics"
+        [showVerifyButtons]="isReviewing"
+        [defaultVerifyState]="verifyStates.DefaultCorrect"
+        [commitDefaults]="commitTopicDefaults"
+        [readOnly]="!isReviewing"
+        (removed)="onTopicRemoved($event)"
+        (riskChanged)="onRiskChanged($event)"
+        (verified)="onVerifyTopic($event)"
+      ></mod-topic-chip-list>
+    </div>
+
+    <!-- Actions: Diagnose, language, etc. -->
+    <div class="actions">
+      <button i18n class="disabled">Diagnose</button>
+
+      <button aria-label="Search" class="disabled">
+        <i class="mdi mdi-magnify"></i>
+      </button>
+
+      <button class="disabled">
+        {{ currentItem?.queueItem?.language?.language }}
+      </button>
+
+      <span class="occurrences">
+        <i aria-hidden="true" class="mdi mdi-repeat"></i>
+        <ng-container i18n>
+          {{ currentItem?.data?.onCount | number }} occurrences
+        </ng-container>
+      </span>
+    </div>
+  </div>
+
+  <!-- Rule actions -->
+  <div class="rule-actions" *ngIf="currentItem && isReviewing">
+    <div class="summary-rule">
+      <mod-option-button-group
+        label="This Rule was"
+        [options]="ruleSummaryButtons"
+        [(value)]="ruleSummary"
+        i18n-label
+      >
+      </mod-option-button-group>
+    </div>
+
+    <div class="summary-examples">
+      <mod-option-button-group
+        label="The examples are"
+        [options]="exampleSummaryButtons"
+        [(value)]="exampleSummary"
+        i18n-label
+      >
+      </mod-option-button-group>
+    </div>
+
+    <div class="activity-buttons">
+      <button class="disabled">
+        <i class="mdi mdi-coffee"></i>
+        <ng-container i18n>
+          Take a Break
+        </ng-container>
+      </button>
+      <button class="disabled">
+        <i class="mdi mdi-timer-sand"></i>
+        <ng-container i18n>
+          Extend Checkout
+        </ng-container>
+      </button>
+      <button class="primary" (click)="checkinItem()" i18n="@@next">
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Examples -->
+  <div class="examples" *ngIf="currentItem">
+    <mod-loading-indicator
+      *ngIf="examples.length === 0 && loadingExamples"
+      [loading]="loadingExamples"
+      i18n
+      >Getting examples...</mod-loading-indicator
+    >
+    <mod-loading-indicator
+      *ngIf="examples.length === 0 && !loadingExamples && !examplesError"
+      [loading]="loadingExamples"
+      i18n
+      >No examples</mod-loading-indicator
+    >
+    <mod-loading-indicator
+      *ngIf="!loadingExamples && examplesError"
+      [error]="true"
+      i18n
+      >Error getting examples:
+      {{ examplesError.message }}</mod-loading-indicator
+    >
+
+    <mod-example
+      *ngFor="let example of examples"
+      [commitDefaults]="commitTopicDefaults"
+      [defaultVerifyState]="verifyStates.DefaultCorrect"
+      [example]="example"
+      [readOnly]="!isReviewing"
+      (exampleDeleted)="onExampleDeleted($event)"
+      (exampleRedacted)="onExampleRedacted($event)"
+      (exampleVerified)="onExampleVerified($event)"
+    ></mod-example>
+
+    <mod-loading-indicator
+      *ngIf="examples.length > 0 && loadingExamples"
+      [loading]="loadingExamples"
+      i18n
+      >Getting more examples...</mod-loading-indicator
+    >
+  </div>
+
+  <nav class="footer" role="navigation" *ngIf="currentItem">
+    <button class="prev disabled" i18n>Previous Page</button>
+    <span class="count" i18n>Completed - of {{ totalItems }} items</span>
+
+    <button class="more-examples" (click)="moreExamples(exampleOffset)" i18n>
+      Load more examples
+    </button>
+  </nav>
+</section>

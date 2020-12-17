@@ -1,0 +1,48 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  .home-arrow {
+    // margin: 0px 6px;
+  }
+
+  .material-icons.next {
+    color: var(--breadcrumb-arrow-fg);
+  }
+
+  .material-icons.copy {
+    margin-left: 9px;
+    margin-top: 2px;
+    font-size: 16px;
+    color: var(--breadcrumb-arrow-fg);
+  }
+}
+
+.breadcrumb__icon {
+  display: inline-block;
+  line-height: 0;
+
+  img {
+    width: 16px;
+  }
+}
+
+xng-breadcrumb ::ng-deep {
+  .xng-breadcrumb-separator {
+    color: var(--breadcrumb-arrow-fg);
+    margin: 0px;
+  }
+
+  .xng-breadcrumb-item {
+    a {
+      color: var(--breadcrumb-link-fg);
+      text-decoration: none;
+      font: 600 11px/20px 'Open Sans';
+    }
+  }
+
+  .xng-breadcrumb-trail {
+    color: var(--breadcrumb-link-active);
+    font: 600 11px/20px 'Open Sans';
+  }
+}

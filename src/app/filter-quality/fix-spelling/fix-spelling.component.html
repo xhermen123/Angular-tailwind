@@ -1,0 +1,12 @@
+<mod-queue-wrapper heading="Fix Spelling" [breadcrumbs]="breadcrumbs">
+  <div class="mt-5">
+    <!-- Spelling Items -->
+    <ftq-fix-spelling-item
+      *ngFor="let item of queueItems"
+      [item]="item"
+      [labelGroups]="labelGroups"
+      [disabled]="!isReviewing"
+      (tagsUpdated)="onTagsUpdated(item, $event)"
+    ></ftq-fix-spelling-item>
+  </div>
+</mod-queue-wrapper>

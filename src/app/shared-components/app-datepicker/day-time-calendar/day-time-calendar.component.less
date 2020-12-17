@@ -1,0 +1,20 @@
+@import '../common/styles/variables';
+
+& {
+  app-day-time-calendar {
+    display: inline-block;
+
+    app-time-select {
+      display: block;
+      border: 1px solid @c-black;
+      border-top: 0;
+    }
+
+    &.app-material {
+      app-time-select {
+        border: 1px solid @c-light-gray;
+        border-top: 0;
+      }
+    }
+  }
+}

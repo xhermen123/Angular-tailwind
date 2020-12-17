@@ -1,0 +1,28 @@
+<span class="app-select multi" (mouseenter)="isOpenList = true;" (mouseleave)="isOpenList = false;" *ngIf="multiselect">
+    <div class="selected-items">
+        <span class="label-text" *ngFor="let selected of _selectedItem"> 
+            {{displayType == 'id' ? selected.id : selected.label}}
+        </span>
+    </div>
+    <i class="material-icons" *ngIf="isOpenList">expand_less</i>
+    <i class="material-icons" *ngIf="!isOpenList">expand_more</i>
+    <ul class="item-list" *ngIf="isOpenList">
+        <li *ngFor="let item of items" [ngClass]="{'item': true}" (click)="onClick(item)"> 
+            <app-checkbox [(ngModel)]="item.selected" class="mr-10"></app-checkbox>
+            {{ item.label }}
+        </li>
+    </ul>
+</span>
+<span class="app-select" (mouseenter)="isOpenList = true;" (mouseleave)="isOpenList = false;" *ngIf="!multiselect">
+    <span class="label-text">
+        {{displayType == 'id' ? _selectedItem.id : _selectedItem.label}}
+    </span>
+    <i class="material-icons" *ngIf="isOpenList">expand_less</i>
+    <i class="material-icons" *ngIf="!isOpenList">expand_more</i>
+    <ul class="item-list" *ngIf="isOpenList">
+        <li *ngFor="let item of items" [ngClass]="{'item': true, 'selected': item.id == _selectedItem.id}" (click)="onClick(item)"> 
+            {{ item.label }}
+            <i class="material-icons" *ngIf="item.id == _selectedItem.id">check</i>
+        </li>
+    </ul>
+</span>

@@ -1,0 +1,22 @@
+<section>
+  <ol
+    class="grid m-0 p-0 gap-4 grid-cols-1 sm:grid-cols-2"
+    [ngClass]="{
+      'lg:grid-cols-4': _gridColumns !== 5,
+      'lg:grid-cols-5': _gridColumns === 5
+    }"
+  >
+    <li *ngFor="let app of _apps">
+      <a
+        class="grid-link p-4 flex flex-col text-center items-center justify-center transition-colors duration-150 ease-in-out rounded bg-surface hover:bg-surface-alt"
+        [ngClass]="{ 'disabled opacity-100': !app.url }"
+        [routerLink]="app.url"
+      >
+        <i class="mb-3 text-4xl text-secondary mdi" [ngClass]="app.icon"></i>
+        <span class="font-display font-bold text-on-background">
+          {{ app.text }}
+        </span>
+      </a>
+    </li>
+  </ol>
+</section>

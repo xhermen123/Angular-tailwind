@@ -1,0 +1,46 @@
+<div class="relative inline-block text-left">
+  <button
+    class="group inline-flex justify-center text-sm"
+    (click)="active = !active"
+  >
+    <span
+      class="px-4 rounded-l last:rounded-r group-hover:bg-secondary group-hover:text-on-secondary whitespace-no-wrap"
+      [ngClass]="{
+        'bg-secondary': active,
+        'bg-neutral': !active,
+        'py-1': isSmall,
+        'py-2': !isSmall
+      }"
+    >
+      {{ label }}
+    </span>
+    <span
+      *ngIf="icon"
+      aria-hidden="true"
+      class="px-3 ml-1 rounded-r group-hover:bg-secondary group-hover:text-on-secondary"
+      [ngClass]="{
+        'bg-secondary': active,
+        'bg-neutral': !active,
+        'py-1': isSmall,
+        'py-2': !isSmall
+      }"
+    >
+      <i class="mdi" [ngClass]="icon"></i>
+    </span>
+  </button>
+
+  <!-- Menu content -->
+  <div
+    class="origin-top-right fixed md:absolute z-20 top-0 md:top-auto left-0 right-0 md:right-auto lg:left-auto lg:right-0 m-6 md:mx-0 md:mt-2 md:mb-0 shadow-2xl bg-neutral rounded min-w-56"
+    [ngClass]="{ hidden: !active }"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<!-- Overlay for hiding the menu on click -->
+<div
+  *ngIf="active"
+  class="fixed w-full h-full top-0 right-0 bottom-0 left-0 z-10 bg-on-background opacity-50 md:bg-transparent"
+  (click)="active = false"
+></div>

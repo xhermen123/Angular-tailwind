@@ -1,0 +1,3 @@
+<div class="pagination-page-count"> 
+    <span [ngClass]="{'active': i === currentIndex}" *ngFor="let item of countArray; let i = index" (click)="selectPageCount(i, item)">{{item}}</span>
+</div>

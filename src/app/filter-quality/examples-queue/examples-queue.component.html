@@ -1,0 +1,30 @@
+<mod-queue-wrapper heading="Audit Examples" [breadcrumbs]="breadcrumbs">
+  <div *ngFor="let item of queueItems" class="mb-4">
+    <div class="panel" [ngClass]="{ 'p-4': minimizeTopics }">
+      <mod-topic-chip-list
+        class="block"
+        [topics]="item.queueItem.topics"
+        [readOnly]="!isReviewing"
+        [minimized]="minimizeTopics"
+        (removed)="onTopicRemoved(item, $event)"
+        (riskChanged)="onRiskChanged(item, $event)"
+      >
+        <div
+          class="font-display font-medium"
+          [class.text-2xl]="!minimizeTopics"
+        >
+          {{ item.data.text }}
+        </div>
+      </mod-topic-chip-list>
+
+      <div class="border-t border-solid border-divider pt-4 mt-4">
+        <mod-queue-item-tags
+          [tags]="item.queueItem.tags"
+          [labelGroups]="labelGroups"
+          [readOnly]="!isReviewing"
+          (tagsUpdated)="onTagsUpdated(item, $event)"
+        ></mod-queue-item-tags>
+      </div>
+    </div>
+  </div>
+</mod-queue-wrapper>

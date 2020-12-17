@@ -1,0 +1,135 @@
+<div class="bg-surface p-5 mb-5 rounded-md grid grid-cols-2 col-gap-8">
+  <div
+    class="col-span-2 flex flex-row items-center justify-between border-b-2 border-neutral pb-5"
+  >
+    <h1 class="mb-0 font-bold text-xl text-on-background">
+      {{ item?.data?.text }}
+      <span class="text-xs font-normal ml-4 text-on-background-muted">
+        &times; {{ item?.data?.onCount | number }}
+      </span>
+    </h1>
+
+    <div *ngIf="!disabled" class="flex flex-row items-center justify-between">
+      <!--
+        Datalist for autocomplete
+        Once the autocomplete service is finished, wire this up to
+        poll it on keydown of input fields below. May have to move
+        it to within the ngFor loop.
+      -->
+      <datalist id="{{ dataListID }}">
+        <option *ngFor="let suggestion of autocomplete">{{
+          suggestion
+        }}</option>
+      </datalist>
+
+      <input
+        aria-label="Type a correction for this item"
+        id="spell-correction-{{ item?.queueItem?.contentId }}"
+        type="text"
+        autocomplete="off"
+        class="p-2 rounded-sm bg-neutral"
+        placeholder="Type a correction..."
+        [attr.list]="dataListID"
+        [(ngModel)]="correction"
+        (input)="onSearchChange($event.target.value)"
+      />
+
+      <button
+        class="button ml-4 py-1 flex items-center text-on-background"
+        (click)="
+          alternativesChild.addAlternative(correction, altTypes.AltSpelling)
+        "
+      >
+        <i class="mr-2 mdi mdi-18px mdi-spellcheck"></i> Alt Spelling
+      </button>
+
+      <button
+        class="button ml-4 py-1 flex items-center text-on-background"
+        (click)="
+          alternativesChild.addAlternative(correction, altTypes.AltSense)
+        "
+      >
+        <i class="mr-2 mdi mdi-18px mdi-arrow-decision-auto"></i> Alt Sense
+      </button>
+
+      <!-- TODO: Once !144 is merged, updated this to use the SelectBoxComponent -->
+      <select
+        class="ml-4 p-2 rounded bg-neutral min-w-40"
+        [(ngModel)]="selectedIgnore"
+        (change)="onIgnoreChanged()"
+      >
+        <option *ngFor="let reason of ignoreReasons" [ngValue]="reason">{{
+          reason.label
+        }}</option>
+      </select>
+    </div>
+  </div>
+
+  <section class="grid pt-4 self-start">
+    <h3 class="mb-1 text-xs font-normal">Examples</h3>
+    <mod-example-list
+      [searchText]="item?.data?.text"
+      [highlightText]="item?.data?.text"
+      [readOnly]="disabled"
+      [showTopics]="false"
+    ></mod-example-list>
+  </section>
+
+  <section class="grid pt-4">
+    <h3 class="mb-1 text-xs font-normal">Alternatives</h3>
+
+    <mod-alternatives
+      [extras]="decision?.extras"
+      [disabled]="disabled"
+      [tags]="decision?.tags"
+      (alternativeAdded)="onAlternativeAdded()"
+      (alternativesChanged)="onAlternativesChanged($event)"
+      #alternativesChild
+    ></mod-alternatives>
+
+    <h3 class="mt-4 mb-1 text-xs font-normal">Tags</h3>
+
+    <div
+      *ngIf="!item?.queueItem?.tags?.length"
+      class="text-on-background-muted"
+    >
+      No tags
+    </div>
+
+    <ul class="flex flex-row flex-wrap items-center justify-start">
+      <li
+        *ngFor="let tag of item?.queueItem?.tags"
+        class="flex flex-row items-stretch rounded-md mr-4 mb-4"
+      >
+        <span
+          class="px-3 border border-surface-alt first:rounded-l flex items-center"
+        >
+          <i
+            *ngIf="tag === 'WRONG.LANGUAGE'"
+            class="mr-2 mdi text-xl mdi-translate"
+            aria-hidden="true"
+          ></i>
+          <i
+            *ngIf="tag === 'IGNORE.SPAM'"
+            class="mr-2 mdi mdi-18px mdi-alert-octagon-outline"
+            aria-hidden="true"
+          ></i>
+          <i
+            *ngIf="tag === 'IGNORE.GIBBERISH'"
+            class="mr-2 mdi text-xl mdi-help"
+            aria-hidden="true"
+          ></i>
+          {{ ignoreReasonLabel(tag) }}
+        </span>
+        <button
+          *ngIf="!disabled"
+          class="ml-1 button text-lg last:rounded-l-none last:rounded-r"
+          aria-label="Remove alternative"
+          (click)="removeTag(tag)"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+    </ul>
+  </section>
+</div>

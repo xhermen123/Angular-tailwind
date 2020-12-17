@@ -1,0 +1,29 @@
+<header
+  class="panel rounded-none shadow-none flex flex-wrap lg:flex-no-wrap items-center justify-between px-4 py-3"
+>
+  <div class="flex items-center flex-grow lg:flex-initial w-full max-w-full">
+    <main-logo class="block sm:flex-none"></main-logo>
+
+    <main-search
+      class="border-l border-solid border-divider flex-auto w-full ml-4 pl-4 lg:pr-3"
+    ></main-search>
+  </div>
+
+  <div class="flex flex-wrap sm:flex-no-wrap items-center">
+    <main-client-picker
+      class="block mt-3 lg:mt-0 mr-3"
+      [selectedClient]="userService.preferences.lastClientId"
+      (clientChanged)="onUserChangedClient($event)"
+    ></main-client-picker>
+
+    <main-language-picker
+      class="block mt-3 lg:mt-0 mr-3"
+      [selectedLanguage]="userService.preferences.language"
+      (languageChanged)="onUserChangedLanguage($event)"
+    ></main-language-picker>
+
+    <main-a11y-flyout class="block mt-3 lg:mt-0 mr-3"></main-a11y-flyout>
+
+    <main-user-flyout class="block mt-3 lg:mt-0"></main-user-flyout>
+  </div>
+</header>

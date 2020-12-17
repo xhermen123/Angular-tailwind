@@ -1,0 +1,68 @@
+<div [ngClass]="{'app-open': areCalendarsShown}">
+  <div [attr.data-hidden]="componentConfig.hideInputContainer"
+       [hidden]="componentConfig.hideInputContainer"
+       class="app-input-container">
+    <input (blur)="inputBlurred()"
+           (focus)="inputFocused()"
+           (ngModelChange)="onViewDateChange($event)"
+           (keydown.enter)="componentConfig.closeOnEnter && hideCalendar()"
+           [disabled]="disabled"
+           [ngModel]="inputElementValue"
+           [placeholder]="placeholder"
+           [readonly]="componentConfig.disableKeypress"
+           class="app-picker-input"
+           type="text"/>
+    <!-- <i class="fas fa-calendar-day"></i> -->
+    <i class="material-icons">insert_invitation</i>
+  </div>
+  <div #container>
+    <div [attr.data-hidden]="!_areCalendarsShown"
+         [hidden]="!_areCalendarsShown"
+         [ngSwitch]="mode"
+         class="app-popup {{theme}}">
+      <app-day-calendar #dayCalendar
+                       (onGoToCurrent)="onGoToCurrent.emit()"
+                       (onLeftNav)="onLeftNavClick($event)"
+                       (onRightNav)="onRightNavClick($event)"
+                       (onSelect)="dateSelected($event, 'day', selectEvent.SELECTION, false)"
+                       *ngSwitchCase="'day'"
+                       [config]="dayCalendarConfig"
+                       [displayDate]="displayDate"
+                       [ngModel]="_selected"
+                       [theme]="theme">
+      </app-day-calendar>
+
+      <app-month-calendar #monthCalendar
+                         (onGoToCurrent)="onGoToCurrent.emit()"
+                         (onLeftNav)="onLeftNavClick($event)"
+                         (onRightNav)="onRightNavClick($event)"
+                         (onSelect)="dateSelected($event, 'month', selectEvent.SELECTION, false)"
+                         *ngSwitchCase="'month'"
+                         [config]="dayCalendarConfig"
+                         [displayDate]="displayDate"
+                         [ngModel]="_selected"
+                         [theme]="theme">
+      </app-month-calendar>
+
+      <app-time-select #timeSelect
+                      (onChange)="dateSelected($event, 'second', selectEvent.SELECTION, true)"
+                      *ngSwitchCase="'time'"
+                      [config]="timeSelectConfig"
+                      [ngModel]="_selected && _selected[0]"
+                      [theme]="theme">
+      </app-time-select>
+
+      <app-day-time-calendar #daytimeCalendar
+                            (onChange)="dateSelected($event, 'second', selectEvent.SELECTION, true)"
+                            (onGoToCurrent)="onGoToCurrent.emit()"
+                            (onLeftNav)="onLeftNavClick($event)"
+                            (onRightNav)="onRightNavClick($event)"
+                            *ngSwitchCase="'daytime'"
+                            [config]="dayTimeCalendarConfig"
+                            [displayDate]="displayDate"
+                            [ngModel]="_selected && _selected[0]"
+                            [theme]="theme">
+      </app-day-time-calendar>
+    </div>
+  </div>
+</div>

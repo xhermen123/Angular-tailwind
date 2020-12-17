@@ -1,0 +1,16 @@
+<mod-queue-wrapper heading="Audit Rules" [breadcrumbs]="breadcrumbs">
+  <div>
+    <ng-container *ngFor="let item of queueItems">
+      <ftq-rules-audit-queue-item
+        class="block mb-16"
+        [rule]="item"
+        [isReviewing]="isReviewing"
+        [labelGroups]="labelGroups"
+        [minimizeTopics]="minimizeTopics"
+        (riskChanged)="onRiskChanged(item, $event)"
+        (topicsUpdated)="onTopicsUpdated(item, $event)"
+        (tagsUpdated)="onTagsUpdated(item, $event)"
+      ></ftq-rules-audit-queue-item>
+    </ng-container>
+  </div>
+</mod-queue-wrapper>

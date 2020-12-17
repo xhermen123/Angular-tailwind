@@ -1,0 +1,13 @@
+<mod-dropdown-menu [label]="selectedClientName" icon="mdi-server">
+  <ul class="block rounded overflow-hidden">
+    <li *ngFor="let client of clients" class="block">
+      <button
+        class="block w-full text-left py-2 px-4 hover:bg-secondary"
+        [ngClass]="{ 'bg-secondary': client.name === selectedClientName }"
+        (click)="onClientChanged(client.id)"
+      >
+        {{ client.name }}
+      </button>
+    </li>
+  </ul>
+</mod-dropdown-menu>

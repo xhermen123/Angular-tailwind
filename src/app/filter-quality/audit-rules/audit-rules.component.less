@@ -1,0 +1,119 @@
+:host {
+  flex: 1;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  grid-template-rows: auto;
+  align-items: center;
+}
+
+header {
+  margin-bottom: 2em;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.option-toggles {
+  grid-row: span 2;
+  justify-self: self-end;
+  display: flex;
+  flex-direction: row;
+  button {
+    margin-left: var(--button-spacing);
+  }
+}
+
+.rule-item {
+  background: var(--section-bg);
+  color: var(--section-fg);
+  padding: var(--section-padding);
+  display: grid;
+  grid-template-areas:
+    'rule rule'
+    'chips actions';
+  h2 {
+    margin: 0 0 1em 0;
+    grid-area: rule;
+  }
+  .topics,
+  .actions {
+    align-self: center;
+  }
+  .topics {
+    justify-self: flex-start;
+  }
+  .actions {
+    justify-self: flex-end;
+  }
+  .occurrences {
+    font-size: 0.75em;
+  }
+}
+
+.checkout {
+  padding: var(--section-padding-tight);
+  border: solid 1px var(--accent-brand);
+  border-radius: var(--section-radius) var(--section-radius) 0 0;
+}
+
+.actions {
+  button + button {
+    margin-left: var(--button-spacing-tight);
+  }
+  span.occurrences {
+    margin-left: var(--button-spacing);
+  }
+}
+
+.rule-actions {
+  display: flex;
+  padding: 1em 0;
+  border-bottom: solid 1px var(--section-separator);
+
+  div > button + button,
+  div > span + button {
+    margin-left: var(--button-spacing);
+  }
+
+  .summary-examples {
+    margin-left: var(--button-spacing);
+  }
+
+  .activity-buttons {
+    margin-left: auto;
+  }
+}
+
+.summary-rule,
+.summary-examples {
+  display: flex;
+  align-items: center;
+  span:first-child {
+    white-space: nowrap;
+    margin-right: var(--button-spacing);
+  }
+}
+
+.examples {
+  padding: 0 var(--section-padding);
+}
+
+nav.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  span.count {
+    margin-left: var(--button-spacing);
+  }
+
+  .more-examples {
+    margin-left: auto;
+  }
+}

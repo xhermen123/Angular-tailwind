@@ -1,0 +1,50 @@
+<mod-dropdown-menu label="Accessibility" icon="mdi-cog">
+  <div class="flex flex-col md:flex-row p-4 md:justify-between">
+    <div class="md:mr-4 flex-grow min-w-40">
+      <p class="font-display font-bold mb-0">Text Resize</p>
+      <p class="text-xs">
+        Use the buttons below to increase or deacrease the text size.
+      </p>
+      <div class="flex items-end">
+        <button
+          class="block leading-none p-2 mr-1 mt-1 text-2xl text-on-background hover:text-secondary"
+          aria-label="increase text size"
+          (click)="increaseTextSize()"
+        >
+          <i class="mdi mdi-format-annotation-plus" aria-hidden="true"></i>
+        </button>
+        <button
+          class="block leading-none p-2 mr-1 mt-1 text-lg text-on-background hover:text-secondary"
+          aria-label="reset text size"
+          (click)="resetTextSize()"
+        >
+          <i class="mdi mdi-format-text-variant" aria-hidden="true"></i>
+        </button>
+        <button
+          class="block leading-none p-2 mr-1 mt-1 text-base text-on-background hover:text-secondary"
+          aria-label="decrease text size"
+          (click)="decreaseTextSize()"
+        >
+          <i class="mdi mdi-format-annotation-minus" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-4 md:mt-0 md:ml-4 min-w-40 flex-grow">
+      <p class="font-display font-bold font-base mb-0">Contrast switch</p>
+      <p class="text-xs">Use the toggle below to switch the contrast.</p>
+
+      <label *ngFor="let themeOption of themeOptions" class="flex items-center">
+        <input
+          type="radio"
+          class="form-radio text-secondary"
+          name="themingRadio"
+          [value]="themeOption.value"
+          [checked]="activeTheme === themeOption.value"
+          (change)="onThemeChange(themeOption.value)"
+        />
+        <span class="ml-2">{{ themeOption.label }}</span>
+      </label>
+    </div>
+  </div>
+</mod-dropdown-menu>

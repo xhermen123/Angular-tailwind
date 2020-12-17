@@ -1,0 +1,17 @@
+<mod-dropdown-menu
+  #dropdownMenu
+  [label]="selectedLanguageName"
+  icon="mdi-translate"
+>
+  <ul class="block rounded overflow-hidden">
+    <li *ngFor="let language of languages" class="block">
+      <button
+        class="block w-full text-left py-2 px-4 hover:bg-secondary"
+        [ngClass]="{ 'bg-secondary': language.name === selectedLanguageName }"
+        (click)="dropdownMenu.active = false; onLanguageChanged(language.code)"
+      >
+        {{ language.name }}
+      </button>
+    </li>
+  </ul>
+</mod-dropdown-menu>

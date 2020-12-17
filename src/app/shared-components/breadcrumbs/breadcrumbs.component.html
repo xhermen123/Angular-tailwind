@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+  <ol class="flex flex-wrap items-center text-sm">
+    <li class="flex items-center mb-2">
+      <a aria-label="Community Sift" routerLink="/">
+        <img
+          class="block w-6 h-6"
+          src="/assets/community-sift-logo-icon.svg"
+          alt=""
+        />
+      </a>
+    </li>
+    <li
+      *ngFor="let breadcrumb of breadcrumbs; last as isLast"
+      class="flex items-center mb-2 whitespace-no-wrap text-on-background-muted"
+      [attr.aria-current]="isLast ? 'page' : null"
+    >
+      <i
+        class="mx-1 text-2xl leading-none mdi mdi-chevron-right"
+        aria-hidden="true"
+      ></i>
+      <a *ngIf="!isLast" [routerLink]="breadcrumb.url">
+        {{ breadcrumb.label }}
+      </a>
+      <span *ngIf="isLast" class="text-on-background">
+        {{ breadcrumb.label }}
+      </span>
+    </li>
+  </ol>
+</nav>

@@ -1,0 +1,224 @@
+/*
+  COLOUR SCHEME DEFINITIONS
+*/
+@import '_breakpoints.less';
+
+/* Default scheme (dark) */
+:root {
+
+  --font-family-sans-serif: 'Open Sans',"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family-monospace: 'Montserrat',"Liberation Mono","Courier New",monospace;
+
+  // Core
+  --page-header-bg: #111312;
+  // --page-bg: #0c0c0c;
+
+  --text-color: #f4f4f4;
+  --text-active-color: #FAFBFD;
+  --text-inactive-color: #636D73;
+  --text-white-color: #FFFFFF;
+  --text-dark-color: #1b1f22;
+  --text-light-dark-color: #8EA2AB;
+  --text-orange-color: #F17105;
+
+  --max-page-width: 1720px;
+  --transition-speed: 250ms;
+  --transition-timing: ease-in-out;
+  --page-content-padding: 2em;
+
+  // Accents
+  --accent-brand: #3FB8AF;
+  --accent-highlight: #F17105;
+
+  // Link styles
+  --link-color: var(--text-color);
+  --link-hover-color: var(--text-color); //TODO
+  --link-breadcrumb-inactive: #CECECE;
+  --link-breadcrumb-active: var(--text-color);
+
+  // Section styles
+  --section-radius: 10px;
+  --section-padding: 1.5em;
+  --section-padding-tight: 0.75em;
+  --section-bg: #1B1F21;
+  --section-fg: #DDDDDD;
+  --section-highlight-bg: #212329;
+  --section-highlight-fg: #909192;
+  --section-separator: #1b1f20;
+
+  // Dashboard
+  --dashboard-item-bg: #0F0F0F;
+  --dashboard-item-fg: var(--text-color);
+  --dashboard-item-focus-bg: #2F2F2F;
+
+  // Button styles
+  --button-bg: #282E30;
+  --button-fg: #8B9EA7;
+  --button-subtle-bg: #111212;
+  --button-subtle-fg: #8B9EA7;
+  --button-primary-bg: #04E762;
+  --button-primary-fg: #1F1F1F;
+  --button-active-bg: #58C1B8;
+  --button-active-fg: #1F1F1F;
+  --button-dark-bg: #1B1F22;
+  --button-light-bg: #414D55;
+  --button-white-fg: #FFFFFF;
+  --button-radius: 4px;
+  --button-spacing: 1em;
+  --button-spacing-tight: 0.5em;
+  --button-padding: 0 1.75em;
+  --button-focus-ring: 0 0 1px 2px white;
+  --button-padding-icon: 0 0.75em;
+  --button-hover-light-bg: #292e2f;
+
+  --dropdown-item-padding: 0.75em;
+
+  // Horizontal rule
+  --hr-color: rgba(255, 255, 255, 0.25);
+
+  // Accent colours
+  --accent: #58C1B8;
+  --accent-1: #3fb8af;
+
+  // Risk indicators
+  --risk-0: #35B536;
+  --risk-1: #468847;
+  --risk-2: #999999;
+  --risk-3: #f89406;
+  --risk-4: #1D8DC4;
+  --risk-5: #F74F07;
+  --risk-6: #D42D2A;
+  --risk-7: #B94A48;
+
+  // Pass/fail indicators
+  --test-pass: #4bd585;
+  --test-fail: #e4604d;
+
+  // Text inputs
+  --input-border: solid 2px #666666;
+  --input-focus-border-color: rgba(255, 255, 255, 0.3);
+  --input-focus-border: solid 2px var(--input-focus-border-color);
+  --input-text-bg: transparent;
+  --input-text-fg: #DDDDDD;
+  --input-text-placeholder: rgba(255, 255, 255, 0.5);
+  --input-text-padding: 0.5em 0.75em;
+  --input-text-radius: 5px;
+
+  // Select inputs
+  --input-select-bg: #3f3f48;
+  --input-select-fg: #DDDDDD;
+  --input-select-placeholder: #DDDDDD;
+  --input-select-padding: 0.5em 0.75em;
+  --input-select-radius: 5px;
+
+  // Topic Chips
+  --topic-chip-bg: #0F0F0F;
+  --topic-chip-fg: #F0F0F0;
+  --topic-chip-indicator: solid 3px var(--topic-chip-fg);
+  --topic-chip-radius: 3px;
+
+  // Topic Chips: Alternate Style
+  --topic-chip-alt-bg: var(--section-bg);
+  --topic-chip-alt-fg: var(--section-fg);
+
+  //Sub navigation
+  --down-icon: #636D73;
+  
+  // Breadcrumb
+  --breadcrumb-link-fg: #8EA2AB;
+  --breadcrumb-arrow-fg: #636D73;
+  --breadcrumb-link-active: #FFFFFF;
+
+  // Checkbox
+  --checkbox-border-width: 2px;
+  --checkbox-accent-border-color: #292E2F;
+  --checkbox-border-color: #1b1f20;
+  --checkbox-mark-color: #FFFFFF;
+  --checkbox-accent-mark-color: #000000;
+
+  // Table
+  --table-header-fg: #BBCDD9;
+  --table-body-fg: white;
+  --table-tr-bg: #111212;
+  --table-tr-border-radius: 2px;
+  --table-tr-space: 4px;
+
+  // Datepicker
+  --datepicker-input-bg: #111312;
+  --datepicker-input-border-radius: 4px;
+  --datepicker-input-box-shadow-color: #2121211A;
+  --datepicker-input-fg: #8EA2AB;
+
+  // Calendar
+  --calendar-bg: #0c0c0c;
+  --calendar-fg: #8EA2AB;
+
+  // Button Group
+  --button-group-item-normal-bg: #212626;
+  --button-group-item-active-bg: #58C1B8;
+
+  // App Select (Custom component)
+  --app-select-bg: #111312;
+  --app-select-hover-bg: #282e30;
+  --app-select-fg: #8ea2ab;
+
+  // Pagination
+  --pagination-button-bg: #1B1F20;
+  --pagination-button-fg: #999999;
+
+  // Avatar
+  --avatar-bg: #24292B;
+
+  // Action button
+  --action-button-bg: #292E2F;
+  --action-button-dark-bg: #0c0c0c;
+  --action-button-radius: 4px;
+
+  // Icon color
+  --icon-color: #636D73;
+
+  // Language Tasks
+  --section-padding-md: 2em;
+
+  --section-name-color: #999999;
+  --section-spacing: 40px;
+  --section-spacing-half: 20px;
+
+  // Comment Separator
+  --comment-separator-color: #292D2D;
+  --comment-icon-btn-bg-color: #0c0c0c;
+
+  // input field
+  --input-field-border-color: #292E2F;
+
+  // word pane
+  --word-pane-bg: #2D3436;
+}
+
+@media (prefers-contrast: high) {
+  // TODO: Dark scheme, high contrast
+}
+
+@media (prefers-contrast: low) {
+  // TODO: Dark scheme, low contrast
+}
+
+/* Light scheme */
+@media (prefers-color-scheme: light) {
+  // TODO: Light theme
+  // See https://twitter.com/steveschoger/status/1151160261170126850 for guidance.
+}
+
+@media (prefers-color-scheme: light) and (prefers-contrast: high) {
+  // TODO: Light scheme, high contrast
+}
+
+@media (prefers-color-scheme: light) and (prefers-contrast: low) {
+  // TODO: Light scheme, low contrast
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-speed: 0;
+  }
+}

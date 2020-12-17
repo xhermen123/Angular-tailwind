@@ -1,0 +1,50 @@
+# Project default config values
+
+### IMPORTANT ###
+# THIS FILE IS TRACKED IN GIT
+# NEVER PUT REAL API KEYS IN THIS FILE
+# INSTEAD, CREATE AND USE development.yaml AND production.yaml
+
+port: 4200
+
+contentSecurityPolicy: >
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' sentry.io;
+  style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+  img-src 'self' data;
+  font-src 'self' fonts.gstatic.com;
+  connect-src 'self' sentry.io;
+  media-src 'none';
+  object-src 'none';
+  prefetch-src 'self' fonts.googleapis.com fonts.gstatic.com;
+  child-src 'none';
+  frame-src 'none';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+  block-all-mixed-content;
+  report-uri https://o56381.ingest.sentry.io/api/1788710/security/?sentry_key=1f168fd1b0fa4b6999f1a901c0804a91&sentry_environment=${ENVIRONMENT}
+
+db:
+  redis:
+    host: localhost
+    port: 6381 # See docker-compose.debug.yml
+    password: ''
+
+session:
+  secret: change-me
+
+sift:
+  rulesApi:
+    url: http://localhost:3003 # Rules API defaults to 3000. Pass PORT=3003 to npm start to avoid conflicts.
+  rulesAudit:
+    url: http://localhost:5000
+    debugApiKey: change-me
+
+sso:
+  audience: localhost:3000
+  issuer: localhost:4200
+  loginUrl: http://localhost:3000/api/v1/login
+  logoutUrl: http://localhost:3000/api/v1/logout
+  validateUrl: http://localhost:3000/api/v1/validate/session
+  privateUrl: http://localhost:3000
+  signingKey: change-me

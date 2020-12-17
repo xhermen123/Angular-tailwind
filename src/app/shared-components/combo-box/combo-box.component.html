@@ -1,0 +1,84 @@
+<div
+  class="px-4 py-2 relative cursor-pointer select-none bg-neutral rounded h-10 {{
+    cssClass
+  }}"
+  [ngClass]="{
+    'z-20': active
+  }"
+>
+  <button
+    class="flex items-center justify-between w-full outline-none focus:outline-none"
+    (click)="onSelectClicked()"
+  >
+    <span class="text-sm truncate" [class.hidden]="active && isSearchable">{{
+      checkedItemValue
+    }}</span>
+    <input
+      class="text-sm select-search-field h-6 border-none bg-transparent relative w-full focus:outline-none"
+      [class.hidden]="!active || !isSearchable"
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="keyword"
+      aria-label=""
+    />
+    <i
+      class="mdi mdi-chevron-down ml-3 duration-300 origin-center transform"
+      [ngClass]="{
+        '-rotate-180': active,
+        hidden: !isShowChevronDownIcon
+      }"
+    ></i>
+  </button>
+
+  <div
+    class="py-3 absolute bottom-0 transform translate-y-full right-0 rounded-b-sm bg-neutral overflow-y-auto scrollbar min-w-full overflow-y-auto"
+    [style.max-height]="optionWrapperMaxHeight"
+    [ngClass]="{
+      hidden:
+        !active || (items | comboBoxFilter: bindValue:keyword).length === 0
+    }"
+  >
+    <div
+      class="p-2 flex justify-between items-center min-w-39 whitespace-no-wrap"
+      [ngClass]="{
+        'bg-secondary': isActive(item) && !isMultiple,
+        'bg-neutral': !isActive(item)
+      }"
+      *ngFor="let item of items | comboBoxFilter: bindValue:keyword"
+      (click)="onItemClicked(item)"
+    >
+      <span
+        class="text-sm font-body w-full cursor-pointer"
+        [ngClass]="{
+          'text-on-primary': isActive(item) && !isMultiple,
+          'text-on-background': !isActive(item)
+        }"
+      >
+        <label class="flex items-center py-1 px-2 cursor-pointer">
+          <input
+            class="form-checkbox bg-neutral border-neutral-muted text-secondary w-5 h-5 multiple-checkbox"
+            type="checkbox"
+            [(ngModel)]="item.checked"
+            (change)="onItemChanged(item)"
+            *ngIf="isMultiple"
+          />
+          <span class="text-sm ml-1 cursor-pointer">
+            {{ item[bindValue] }}
+          </span>
+        </label>
+      </span>
+
+      <i
+        class="mdi mdi-check-bold text-on-primary text-sm"
+        [ngClass]="{ hidden: !isActive(item) || isMultiple }"
+      ></i>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay for hiding the menu on click -->
+<div
+  *ngIf="active"
+  class="fixed w-full h-full top-0 right-0 bottom-0 left-0 z-10 bg-on-background opacity-50 md:bg-transparent"
+  (click)="close()"
+></div>

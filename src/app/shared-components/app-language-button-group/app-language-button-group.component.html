@@ -1,0 +1,6 @@
+<div class="language-button-group" *ngIf="!multiple"> 
+    <span [ngClass]="{'active': _value === item}" *ngFor="let item of languages; let i = index" (click)="selectLanguage(i, item)">{{item}}</span>
+</div>
+<div class="language-button-group" *ngIf="multiple"> 
+    <span [ngClass]="{'active': _value.indexOf(item) > -1}" *ngFor="let item of languages; let i = index" (click)="selectLanguage(i, item)">{{item}}</span>
+</div>

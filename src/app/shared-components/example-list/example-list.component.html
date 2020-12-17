@@ -1,0 +1,33 @@
+<div>
+  <mod-loading-indicator
+    *ngIf="loading || error"
+    [loading]="loading"
+    [error]="error"
+  >
+  </mod-loading-indicator>
+
+  <mod-example
+    *ngFor="let example of examples"
+    [commitDefaults]="commitDefaults"
+    [defaultVerifyState]="defaultVerifyState"
+    [example]="example"
+    [highlightText]="highlightText || searchText"
+    [readOnly]="readOnly"
+    [showTopics]="showTopics"
+    (exampleDeleted)="(exampleDeleted)"
+    (exampleRedacted)="(exampleRedacted)"
+    (exampleVerified)="(exampleVerified)"
+    (riskChanged)="(riskChanged)"
+    (topicsUpdated)="(topicsUpdated)"
+  ></mod-example>
+
+  <span
+    *ngIf="!loading && examples.length === 0"
+    class="text-on-background-muted"
+    >No examples</span
+  >
+
+  <button *ngIf="!readOnly" (click)="moreExamples()" class="button block mt-4">
+    More Examples
+  </button>
+</div>

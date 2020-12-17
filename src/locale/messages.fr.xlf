@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7841430672042223267" approved="yes">
+        <source>Correct</source>
+        <target state="translated">Exemplaire</target>
+      </trans-unit>
+      <trans-unit id="8922463535167284027" approved="yes">
+        <source>Close Enough</source>
+        <target state="translated">Assez Bien</target>
+      </trans-unit>
+      <trans-unit id="2748884846672363037">
+        <source>Wrong</source>
+        <target state="translated">Incorrectement</target>
+      </trans-unit>
+      <trans-unit id="7562930102248220394">
+        <source>Didn't Review</source>
+        <target state="translated">N'a pas révisé</target>
+      </trans-unit>
+      <trans-unit id="6570363013146073520">
+        <source>Dashboard</source>
+        <target state="translated">Tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="4081146986525007154">
+        <source>Policy Guides</source>
+        <target state="translated">Guides politiques</target>
+      </trans-unit>
+      <trans-unit id="321982889321544170">
+        <source>Filter Quality</source>
+        <target state="translated">Qualité du filtre</target>
+      </trans-unit>
+      <trans-unit id="2717777949934454974">
+        <source>User Reputation</source>
+        <target state="translated">Réputation des utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="3733292502950870610">
+        <source>Reported Content</source>
+        <target state="translated">Contenu signalé</target>
+      </trans-unit>
+      <trans-unit id="8711807080685028530">
+        <source>Transparency Reports</source>
+        <target state="translated">Rapports de transparence</target>
+      </trans-unit>
+      <trans-unit id="269c4f2561ef3e978634dc2386b2c82b6f795b9a" datatype="html" approved="yes">
+        <source>Audit Rules</source> <target state="translated">Auditer les Règles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07d61f13f10a41d2683e8c3f653f2e03f09e22dc" datatype="html" approved="yes">
+        <source>Start Reviewing</source>
+        <target state="translated">Démarrer la revue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="077fdbede003b38c60c0a43a30fd186cef3df557" datatype="html" approved="no">
+        <source>Stop Reviewing</source>
+        <target state="needs-translation">Arrete la Revue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65be78e563505fcd8389d43832478b782ca8c471" datatype="html" approved="yes">
+        <source>Filter Data</source>
+        <target state="translated">Filtrer les données</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a70a4113859284a57a39ecec744f10e931f396c" datatype="html" approved="yes">
+        <source>Saved Views</source>
+        <target state="translated">Vues enregistrées</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="44b83ebe68ddd91779c366f3e5373463aef054eb" datatype="html" approved="yes">
+        <source>Diagnose</source>
+        <target state="translated">Diagnostiquer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0bb3a25b347105931f2f9c009cc62f0219d8d79f" datatype="html" approved="yes">
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{currentItem.occurrences | number}}"/> occurrences
+        </source>
+        <target state="translated"><x id="INTERPOLATION" equiv-text="{{currentItem.occurrences | number}}"/> occurrences</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e7198336bc31157cf220765cb115a280541b5176" datatype="html" approved="yes">
+        <source>This Rule was</source> <target state="translated">Cette règle était</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="30850fc44fd57d5ad0f1cb7e92be118c27288ca0" datatype="html" approved="yes">
+        <source>The examples are</source> <target state="translated">Les exemples sont</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d18104ca5b2a84dd7fbb80dcb4931d3c88e8d3c" datatype="html" approved="yes">
+        <source>Take a Break</source> <target state="translated">Prendre une pause</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d504b656ca005344c5087f93ebc4506e51258a7a" datatype="html" approved="yes">
+        <source>
+          Extend Checkout
+        </source>
+        <target state="translated">Étendre le Paiement</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="next" datatype="html" approved="yes">
+        <source>Next</source>
+        <target state="translated">Suivant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cacda2e598eebb6964fcb4cbe0ac20b54e818c03" datatype="html" approved="yes">
+        <source>Getting examples...</source>
+        <target state="translated">Obtenir des exemples ...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="308184bc96d9a0147a21fa7cdac41988ad7d6777" datatype="html" approved="yes">
+        <source>No examples</source>
+        <target state="translated">Pas d'exemples</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9f450dec3c8b8136071d889ff0d6b50732cec33b" datatype="html" approved="yes">
+        <source>Error getting examples: <x id="INTERPOLATION" equiv-text="{{ examplesError.message }}"/></source>
+        <target state="translated">Erreur lors de l'obtention d'exemples: <x id="INTERPOLATION" equiv-text="{{ examplesError.message }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d8849a069dd5bf5db6835cabd1be51c1080ba5c" datatype="html" approved="yes">
+        <source>Getting more examples...</source>
+        <target state="translated">Obtenir d'autres exemples</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1a05e2a7905976804ad9a10c19503eab4c5c30ef" datatype="html" approved="yes">
+        <source>Previous Page</source>
+        <target state="translated">Page précédente</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="10ecb887e95a6e73eb8f19214f03e455e9b13b57" datatype="html" approved="yes">
+        <source>Completed X of Y items</source>
+        <target state="translated">Éléments X sur Y terminés</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3243686d85069279fd20198d8575a4c4154ead47" datatype="html" approved="yes">
+        <source>Load more examples</source>
+        <target state="translated">Charger plus d'exemples</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/filter-quality/audit-rules/audit-rules.component.html</context>
+          <context context-type="linenumber">125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="704866d0ddbf5f130e4631c4ac6856c26b49d77f" datatype="html" approved="yes">
+        <source>Search for keywords, phrases, etc.</source>
+        <target state="translated">Recherchez des mots clés, des phrases, etc.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/search/search.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cd9c8ea1d50a8cd0a86dfb654621724ff4fdb022" datatype="html" approved="yes">
+        <source>LANGUAGE</source>
+        <target state="translated">LANGUE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/language-picker/language-picker.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="31b3555032404f9f4bbe13302c62ccbabb112453" datatype="html" approved="yes">
+        <source>ACCESSIBILITY</source>
+        <target state="translated">Accessibilité</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/a11y-flyout/a11y-flyout.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="af1ada117665c7119f2ada409759833ecb91b119" datatype="html" approved="yes">
+        <source>USER</source>
+        <target state="translated">Moi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/user-flyout/user-flyout.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

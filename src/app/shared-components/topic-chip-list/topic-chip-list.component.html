@@ -1,0 +1,57 @@
+<ng-template #contentTemplate><ng-content></ng-content></ng-template>
+<div *ngIf="!minimized" class="mb-4">
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+</div>
+
+<div class="flex items-center flex-wrap last:-mb-4">
+  <mod-topic-chip
+    *ngIf="generalTopic"
+    class="block h-full mb-4 mr-2"
+    [topic]="generalTopic"
+    [readOnly]="readOnly"
+    [minimized]="minimized"
+    (riskChanged)="onRiskChanged($event)"
+  ></mod-topic-chip>
+
+  <div *ngIf="minimized" class="mb-4 mr-2">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+
+  <mod-topic-chip
+    *ngFor="let topic of additionalTopics"
+    class="block h-full mb-4 mr-2 last:mr-0"
+    [topic]="topic"
+    [readOnly]="readOnly"
+    [minimized]="minimized"
+    (removed)="onRemoved($event)"
+    (riskChanged)="onRiskChanged($event)"
+  ></mod-topic-chip>
+
+  <span *ngIf="!topics || topics.length === 0">(No topics)</span>
+
+  <mod-dropdown-menu
+    *ngIf="!readOnly"
+    class="mb-4 h-full"
+    label="More"
+    icon="mdi-dots-horizontal"
+  >
+    <div class="p-1">
+      <ul class="block overflow-y-auto h-48 scrollbar">
+        <li *ngFor="let topic of topicsList">
+          <label class="flex items-center py-1 px-2 hover:text-highlight">
+            <input
+              class="form-checkbox bg-neutral border-neutral-muted text-secondary"
+              type="checkbox"
+              [checked]="topic.checked"
+              (change)="onTopicChanged(topic.id, $event.target.checked)"
+            />
+            <i class="ml-2 mdi mdi-{{ topic.icon }}" aria-hidden="true"></i>
+            <span class="text-sm ml-1">
+              {{ topic.name }}
+            </span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </mod-dropdown-menu>
+</div>

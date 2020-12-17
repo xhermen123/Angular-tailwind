@@ -1,0 +1,66 @@
+@import '../common/styles/variables';
+
+& {
+  app-month-calendar {
+    display: inline-block;
+
+    .app-month-calendar-container {
+      background: @c-light-black;
+    }
+
+    // .app-calendar-wrapper {
+      // border: 1px solid @c-black;
+    // }
+
+    .app-calendar-month {
+      box-sizing: border-box;
+      width: @basic-height * 7 / 4;
+      height: @basic-height * 7 / 4;
+      cursor: pointer;
+
+      &.app-selected {
+        background: @c-primary;
+        color: @c-white;
+      }
+    }
+
+    &.app-material {
+      .app-calendar-weekday {
+        height: @basic-height - 5px;
+        width: @basic-height;
+        line-height: @basic-height - 5px;
+        background: @c-light-gray;
+        border: 1px solid @c-light-gray;
+      }
+
+      .app-calendar-wrapper {
+        border: 1px solid @c-light-gray;
+      }
+
+      .app-calendar-month {
+        box-sizing: border-box;
+        background: @c-white;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+
+        &:hover {
+          background: @c-light-gray;
+        }
+      }
+
+      .app-selected {
+        background: @c-primary;
+        color: @c-white;
+
+        &:hover {
+          background: @c-primary;
+        }
+      }
+
+      .app-current-month {
+        border: 1px solid @c-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="language-tasks-details-header">
+  <div class="left-section"> 
+      <h3 class="title">Language Task Details</h3>
+      <main-breadcrumbs></main-breadcrumbs>
+  </div>
+  <div class="right-section"> 
+      <button type="button" class="filter-button subtle hover-light mr-20">
+        <span class="btn-label">Filters</span>
+        <span class="btn-icon btn-icon-left">
+          <i class="material-icons">filter_list</i>  
+          <!-- <i class="fas fa-filter"></i> -->
+        </span>
+      </button>
+      <button class="button mr-20" (click)="editTask()" *ngIf="pageType === 0">
+        <span class="btn-label">Edit Task</span>
+      </button>
+      <button class="button active" (click)="createTask()" *ngIf="pageType === 0 || pageType === 1">
+        <span class="btn-label">New Task</span>
+      </button>
+  </div>
+</div>

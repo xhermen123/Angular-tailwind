@@ -1,0 +1,62 @@
+@import '../common/styles/variables';
+
+& {
+  app-date-picker {
+    display: inline-block;
+
+    &.app-material {
+      .app-picker-input {
+        box-sizing: border-box;
+        height: @basic-height;
+        width: (@basic-height * 7) + 3px;
+        font-size: 13px;
+        outline: none;
+      }
+    }
+
+    .app-input-container {
+      position: relative;
+
+      // custom styles
+
+      .app-picker-input {
+        background-color: var(--datepicker-input-bg);
+        border: none;
+        outline: none;
+        box-shadow: 0px 1px 8px var(--datepicker-input-box-shadow-color);
+        border-radius: var(--datepicker-input-border-radius);
+        font: 600 12px/18px var(--font-family-sans-serif);
+        color: var(--datepicker-input-fg);
+        padding: 10px 13px;
+        padding-right: 30px;
+        width: 100%;
+      }
+
+      i {
+        position: absolute;
+        top: 11px;
+        right: 8px;
+        font-size: 16px;
+        color: var(--icon-color);
+      }
+    }
+
+    .app-selected {
+      background: @c-primary;
+      color: @c-white;
+    }
+  }
+
+  .app-popup {
+    position: relative;
+    background: @c-light-black;
+    box-shadow: 1px 1px 5px 0 fade(@c-black, 50);
+    // border-left: 1px solid fade(@c-black, 10);
+    // border-right: 1px solid fade(@c-black, 10);
+    // border-bottom: 1px solid fade(@c-black, 10);
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+}
